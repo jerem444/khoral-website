@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Caviar Dreams';
+  src: url('../fonts/CaviarDreams.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Caviar Dreams';
+  src: url('../fonts/CaviarDreams_Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+:root {
+  --primary: #ffffff;
+  --primary-dark: #e0e0e0;
+  --secondary: #333333;
+  --secondary-light: #444444;
+  --accent: #666666;
+  --accent-dark: #555555;
+  --text: #ffffff;
+  --text-secondary: #cccccc;
+  --background: #000000;
+  --background-light: #111111;
+}
+
+@layer base {
+  body {
+    @apply bg-black text-white font-sans;
+    background-color: var(--background);
+    color: var(--text);
+    background-image: 
+      radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 20%),
+      radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 20%);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans font-bold;
+  }
+
+  /* S'assurer que tous les textes utilisent Caviar Dreams */
+  p, a, span, div, button {
+    @apply font-sans;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 bg-white text-black rounded-full 
+           hover:bg-gray-200 transition-all duration-300
+           shadow-lg hover:shadow-xl hover:shadow-white/10
+           transform hover:-translate-y-0.5
+           font-sans;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 border-2 border-white text-white rounded-full 
+           hover:bg-white hover:text-black transition-all duration-300
+           shadow-lg hover:shadow-xl hover:shadow-white/10
+           transform hover:-translate-y-0.5
+           font-sans;
+  }
+
+  .section-title {
+    @apply text-4xl md:text-5xl font-bold mb-8 text-center
+           bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent
+           font-sans;
+  }
+
+  .card {
+    @apply bg-[#111111] p-6 rounded-lg 
+           shadow-lg hover:shadow-xl transition-all duration-300
+           border border-[#333333] hover:border-white/30
+           transform hover:-translate-y-1;
+  }
+
+  .nav-link {
+    @apply text-white hover:text-gray-300 transition-colors duration-300
+           relative after:absolute after:bottom-0 after:left-0
+           after:w-0 after:h-0.5 after:bg-white
+           hover:after:w-full after:transition-all after:duration-300
+           font-sans;
+  }
+
+  .album-link {
+    @apply text-white hover:text-gray-300 transition-colors duration-300
+           flex items-center gap-2
+           font-sans;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+} 
