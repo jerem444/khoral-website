@@ -4,3 +4,8 @@ node_modules/
 .env
 .env.local
 .env*.local
+
+# Tina CMS
+tina/__generated__/
+tina/tina-lock.json
+public/admin/

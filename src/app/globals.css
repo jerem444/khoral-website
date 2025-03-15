@@ -4,14 +4,14 @@
 
 @font-face {
   font-family: 'Caviar Dreams';
-  src: url('../fonts/CaviarDreams.ttf') format('truetype');
+  src: url('../assets/fonts/CaviarDreams.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Caviar Dreams';
-  src: url('../fonts/CaviarDreams_Bold.ttf') format('truetype');
+  src: url('../assets/fonts/CaviarDreams_Bold.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
 }
@@ -80,11 +80,16 @@
   }
 
   .nav-link {
-    @apply text-white hover:text-gray-300 transition-colors duration-300
-           relative after:absolute after:bottom-0 after:left-0
-           after:w-0 after:h-0.5 after:bg-white
-           hover:after:w-full after:transition-all after:duration-300
+    @apply text-white transition-all duration-300 relative
            font-sans;
+    text-decoration-line: none;
+  }
+
+  .nav-link:hover {
+    @apply text-gray-300;
+    text-decoration-line: line-through;
+    text-decoration-thickness: 2px;
+    text-decoration-color: rgb(107 114 128); /* text-gray-500 */
   }
 
   .album-link {
