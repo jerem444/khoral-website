@@ -8,7 +8,7 @@ const BandcampPlayer = () => {
         className="rounded-lg shadow-lg"
       >
         <a href="https://khoral.bandcamp.com/album/all-the-lost-weekends">
-          All the Lost Weekends de Khoral
+          All the Lost Weekends
         </a>
       </iframe>
     </div>
