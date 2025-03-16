@@ -15,22 +15,43 @@ export interface Concert {
 
 export default async function ConcertsPage() {
   const response = await client.queries.concertsConnection();
-  const concerts = response.data.concertsConnection.edges?.map((edge: any) => edge.node as Concert) || [];
+  const concerts = response.data.concertsConnection.edges?.map((edge: any) => edge.node.concerts).flat() || [];
+
+  // Séparer les concerts futurs et passés
+  const now = new Date();
+  const futureConcerts = concerts.filter((concert: Concert) => new Date(concert.date) > now);
+  const pastConcerts = concerts.filter((concert: Concert) => new Date(concert.date) <= now);
+
+  // Trier les concerts futurs par date
+  futureConcerts.sort((a: Concert, b: Concert) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
   return (
     <main className={styles.container}>
       <Navbar />
       <div className={styles.content}>
-        <h1 className={styles.title}>Concerts</h1>
+        {/* Section pour les concerts futurs */}
+        <h1 className={styles.title}>Prochains Concerts</h1>
         <div className={styles.concertsList}>
-          {concerts.map((concert: Concert, index: number) => (
+          {futureConcerts.map((concert: Concert, index: number) => (
             <div key={index} className={styles.concertCard}>
               <ConcertInfo concert={concert} variant="card" />
             </div>
           ))}
-          
-          {concerts.length === 0 && (
+
+          {futureConcerts.length === 0 && (
             <p className={styles.emptyMessage}>Aucun concert programmé pour le moment.</p>
+          )}
+
+          {/* Section pour les concerts passés */}
+          <h1 className={styles.title}>Concerts passés</h1>
+          {pastConcerts.map((concert: Concert, index: number) => (
+            <div key={index} className={styles.concertCard}>
+              <ConcertInfo concert={concert} variant="card" />
+            </div>
+          ))}
+
+          {pastConcerts.length === 0 && (
+            <p className={styles.emptyMessage}>Aucun concert passé.</p>
           )}
         </div>
       </div>

@@ -50,7 +50,24 @@ export default defineConfig({
         label: "Concerts",
         path: "src/data/concerts",
         format: "json",
+        ui: {
+          filename: {
+            readonly: true,
+            slugify: values => "concerts.json",
+          },
+        },
         fields: [
+          {
+            type: "object",
+            name: "concerts",
+            label: "Concerts",
+            list: true,
+            ui: {
+              itemProps: (item) => ({
+                label: `${item?.venue} - ${item?.date}`,
+              }),
+            },
+            fields: [
           {
             type: "string",
             name: "venue",
@@ -97,7 +114,7 @@ export default defineConfig({
             name: "price",
             label: "Prix (€)",
           }
-        ],
+        ]}],
       },
     ],
   },

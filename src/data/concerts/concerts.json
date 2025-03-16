@@ -1,0 +1,28 @@
+{
+  "concerts": [
+    {
+      "venue": "Le Floride",
+      "date": "2025-03-21T23:00:00.000Z",
+      "city": "Nantes",
+      "price": 8
+    },
+    {
+      "venue": "Le Petit Bain",
+      "date": "2025-04-18T22:00:00.000Z",
+      "city": "Paris",
+      "address": "7 Port de la Gare, 75013 Paris",
+      "ticketUrl": "https://petitbain.org",
+      "description": "Venez découvrir Khoral en live pour une soirée exceptionnelle !",
+      "price": 12
+    },
+    {
+      "venue": "La Cigale",
+      "date": "2025-05-10T20:00:00.000Z",
+      "city": "Paris",
+      "address": "120 Boulevard de Rochechouart, 75018 Paris",
+      "ticketUrl": "https://lacigale.fr",
+      "description": "Concert de Khoral avec des invités spéciaux.",
+      "price": 15
+    }
+  ]
+}

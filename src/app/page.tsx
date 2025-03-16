@@ -7,7 +7,7 @@ import styles from './page.module.css';
 
 async function getNextConcert() {
   const response = await client.queries.concertsConnection();
-  const concerts = response.data.concertsConnection.edges?.map((edge: any) => edge.node as Concert) || [];
+  const concerts = response.data.concertsConnection.edges?.map((edge: any) => edge.node.concerts).flat() || [];
   
   // Filtrer les concerts futurs et les trier par date
   const futureConcerts = concerts
