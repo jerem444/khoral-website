@@ -1,29 +1,93 @@
+'use client';
+
 import Link from 'next/link';
+import { useState } from 'react';
+import styles from './Navbar.module.css';
+
+const navLinks = [
+  { href: '/', label: 'accueil' },
+  { href: '/portfolio', label: 'portfolio' },
+  { href: '/concerts', label: 'concerts' },
+  { href: '/videos', label: 'vidéos' },
+  { href: '/musique', label: 'musique' },
+];
+
+const NavLink = ({ href, children, onClick, isMobile = false }: { 
+  href: string; 
+  children: React.ReactNode; 
+  onClick?: () => void;
+  isMobile?: boolean;
+}) => (
+  <Link 
+    href={href} 
+    className={isMobile ? styles.mobileNavLink : styles.navLink} 
+    onClick={onClick}
+  >
+    {children}
+  </Link>
+);
+
+const HamburgerButton = ({ isOpen, onClick }: { isOpen: boolean; onClick: () => void }) => (
+  <button 
+    onClick={onClick}
+    className={`${styles.burger} ${isOpen ? styles.menuOpen : ''}`}
+    aria-label={isOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+  >
+    <div className={`${styles.burgerLine} ${styles.top} mb-1.5`} />
+    <div className={`${styles.burgerLine} ${styles.middle} mb-1.5`} />
+    <div className={`${styles.burgerLine} ${styles.bottom}`} />
+  </button>
+);
+
+const DesktopMenu = () => (
+  <div className={styles.menuDesktop}>
+    {navLinks.map(({ href, label }) => (
+      <NavLink key={href} href={href}>
+        {label}
+      </NavLink>
+    ))}
+  </div>
+);
+
+const MobileMenu = ({ isOpen, onLinkClick }: { isOpen: boolean; onLinkClick: () => void }) => {
+  if (!isOpen) return null;
+
+  return (
+    <div className={styles.menuMobileWrapper}>
+      <div className={styles.menuMobile}>
+        <nav className={styles.menuMobileNav}>
+          {navLinks.map(({ href, label }) => (
+            <NavLink 
+              key={href} 
+              href={href} 
+              onClick={onLinkClick}
+              isMobile
+            >
+              {label}
+            </NavLink>
+          ))}
+        </nav>
+      </div>
+    </div>
+  );
+};
 
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const closeMenu = () => setIsMenuOpen(false);
+
   return (
-    <nav className="bg-black text-white p-4 fixed w-full top-0 z-50">
-      <div className="container mx-auto flex justify-between items-center">
-        <Link href="/" className="text-2xl font-display font-bold hover:text-primary transition-colors duration-300">
-          Khoral
+    <nav className={styles.navbar}>
+      <div className={styles.navbarBackground} />
+      <div className={styles.container}>
+        <Link href="/" className={styles.brand}>
+          khoral
         </Link>
-        <div className="space-x-6">
-          <Link href="/" className="nav-link">
-            Accueil
-          </Link>
-          <Link href="/portfolio" className="nav-link">
-            Portfolio
-          </Link>
-          <Link href="/concerts" className="nav-link">
-            Concerts
-          </Link>
-          <Link href="/videos" className="nav-link">
-            Vidéos
-          </Link>
-          <Link href="/musique" className="nav-link">
-            Musique
-          </Link>
-        </div>
+        
+        <HamburgerButton isOpen={isMenuOpen} onClick={toggleMenu} />
+        <DesktopMenu />
+        <MobileMenu isOpen={isMenuOpen} onLinkClick={closeMenu} />
       </div>
     </nav>
   );

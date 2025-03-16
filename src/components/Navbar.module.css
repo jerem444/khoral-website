@@ -1,0 +1,106 @@
+.navbar {
+  height: 73px;
+  @apply fixed top-0 left-0 right-0 z-50;
+}
+
+.navbarBackground {
+  @apply absolute inset-0 bg-black;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.container {
+  @apply relative max-w-7xl mx-auto px-4 py-4 flex items-center justify-between h-full;
+}
+
+.brand {
+  @apply text-2xl font-bold text-white hover:text-gray-300;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Navigation Links Base */
+.linkBase {
+  @apply relative text-white;
+}
+
+.linkBase::after {
+  content: '';
+  @apply absolute bottom-0 h-0.5 bg-white transition-all duration-300;
+}
+
+/* Desktop Menu */
+.menuDesktop {
+  @apply hidden md:flex items-center space-x-8;
+}
+
+.navLink {
+  composes: linkBase;
+  @apply inline-block py-2 px-4;
+}
+
+.navLink::after {
+  @apply left-0 w-0;
+}
+
+.navLink:hover::after {
+  @apply w-full;
+}
+
+/* Mobile Menu */
+.menuMobileWrapper {
+  @apply fixed inset-x-0 top-[73px] bottom-0 bg-black;
+}
+
+.menuMobile {
+  @apply h-[calc(100vh-73px)] flex flex-col items-center;
+}
+
+.menuMobileNav {
+  @apply w-full pt-8 space-y-6;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.mobileNavLink {
+  composes: linkBase;
+  @apply block py-3 px-4 w-full text-center text-lg;
+}
+
+.mobileNavLink::after {
+  @apply left-1/2 -translate-x-1/2 w-0;
+}
+
+.mobileNavLink:hover::after {
+  @apply w-1/2;
+}
+
+/* Hamburger Button */
+.burger {
+  @apply md:hidden flex flex-col justify-center items-center w-8 h-8 relative z-50;
+}
+
+.burgerLine {
+  @apply w-6 h-0.5 bg-white;
+  transition: all 0.3s ease-in-out;
+}
+
+.menuOpen .top {
+  @apply transform rotate-45 translate-y-2;
+}
+
+.menuOpen .middle {
+  @apply opacity-0;
+}
+
+.menuOpen .bottom {
+  @apply transform -rotate-45 -translate-y-2;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+} 

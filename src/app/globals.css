@@ -2,6 +2,75 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Variables globales */
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+}
+
+/* Styles de base */
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgb(var(--background-end-rgb))
+  )
+  rgb(var(--background-start-rgb));
+}
+
+/* Classes utilitaires */
+.transition-standard {
+  transition: all 0.3s ease-in-out;
+}
+
+.link-base {
+  position: relative;
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+}
+
+.underline-effect {
+  position: relative;
+}
+
+.underline-effect::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: currentColor;
+  transition: width 0.3s ease-in-out;
+}
+
+.underline-effect:hover::after {
+  width: 100%;
+}
+
+/* Styles des liens de navigation */
+.nav-link {
+  @apply link-base underline-effect transition-standard;
+  padding: 0.5rem 1rem;
+}
+
+.nav-link:hover {
+  color: rgb(156 163 175);
+}
+
+/* Animations */
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
 @font-face {
   font-family: 'Caviar Dreams';
   src: url('../assets/fonts/CaviarDreams.ttf') format('truetype');
@@ -14,19 +83,6 @@
   src: url('../assets/fonts/CaviarDreams_Bold.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
-}
-
-:root {
-  --primary: #ffffff;
-  --primary-dark: #e0e0e0;
-  --secondary: #333333;
-  --secondary-light: #444444;
-  --accent: #666666;
-  --accent-dark: #555555;
-  --text: #ffffff;
-  --text-secondary: #cccccc;
-  --background: #000000;
-  --background-light: #111111;
 }
 
 @layer base {
@@ -50,56 +106,181 @@
 }
 
 @layer components {
-  .btn-primary {
-    @apply px-6 py-3 bg-white text-black rounded-full 
-           hover:bg-gray-200 transition-all duration-300
+  /* Variables communes pour les transitions */
+  .transition-standard {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  /* Styles de base pour les liens */
+  .link-base {
+    @apply text-white relative font-sans inline-block
+           transition-standard
+           hover:text-white/90;
+  }
+
+  /* Style de soulignement commun */
+  .underline-effect {
+    @apply after:absolute after:bottom-[-4px] after:left-1/2
+           after:w-0 after:h-[1px] after:bg-white
+           after:transition-standard
+           after:-translate-x-1/2
+           before:absolute before:inset-0
+           before:bg-white/0 before:transition-colors
+           before:duration-300;
+  }
+
+  .underline-effect:hover {
+    @apply after:w-full;
+  }
+
+  .underline-effect:hover::before {
+    @apply bg-white/5;
+  }
+
+  /* Styles des boutons */
+  .btn-base {
+    @apply px-6 py-3 rounded-full 
+           transition-standard
            shadow-lg hover:shadow-xl hover:shadow-white/10
            transform hover:-translate-y-0.5
            font-sans;
+  }
+
+  .btn-primary {
+    @apply btn-base bg-white text-black 
+           hover:bg-gray-200;
   }
 
   .btn-secondary {
-    @apply px-6 py-3 border-2 border-white text-white rounded-full 
-           hover:bg-white hover:text-black transition-all duration-300
-           shadow-lg hover:shadow-xl hover:shadow-white/10
-           transform hover:-translate-y-0.5
-           font-sans;
+    @apply btn-base border-2 border-white text-white 
+           hover:bg-white hover:text-black;
   }
 
+  /* Navigation */
+  .nav-link {
+    @apply link-base underline-effect;
+  }
+
+  .nav-link.active {
+    @apply after:w-full
+           after:bg-gradient-to-r after:from-white/50 after:via-white after:to-white/50
+           after:animate-[shimmer_2s_linear_infinite]
+           after:bg-[length:200%_100%];
+  }
+
+  /* Navbar */
+  .navbar {
+    @apply bg-black text-white p-4 fixed w-full top-0 z-50;
+  }
+
+  .navbar-container {
+    @apply container mx-auto flex justify-between items-center;
+  }
+
+  .navbar-brand {
+    @apply text-xl md:text-2xl font-display font-bold 
+           hover:text-primary transition-standard;
+  }
+
+  .navbar-menu-desktop {
+    @apply hidden md:flex space-x-6;
+  }
+
+  .navbar-menu-mobile {
+    @apply md:hidden absolute top-full left-0 right-0 
+           bg-black flex-col items-center py-4 space-y-4;
+  }
+
+  /* Hamburger */
+  .navbar-burger {
+    @apply md:hidden p-2;
+  }
+
+  .hamburger-line {
+    @apply w-6 h-0.5 bg-white transition-standard;
+  }
+
+  .hamburger-line.top {
+    @apply origin-top-right;
+  }
+
+  .hamburger-line.middle {
+    @apply origin-center;
+  }
+
+  .hamburger-line.bottom {
+    @apply origin-bottom-right;
+  }
+
+  .menu-open .hamburger-line.top {
+    @apply rotate-45 translate-y-[0.1rem] translate-x-[0.15rem];
+  }
+
+  .menu-open .hamburger-line.middle {
+    @apply scale-0 opacity-0;
+  }
+
+  .menu-open .hamburger-line.bottom {
+    @apply -rotate-45 -translate-y-[0.1rem] translate-x-[0.15rem];
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-[#111111] p-6 rounded-lg 
+           shadow-lg hover:shadow-xl transition-standard
+           border border-[#333333] hover:border-white/30
+           transform hover:-translate-y-1;
+  }
+
+  /* Titres */
   .section-title {
     @apply text-4xl md:text-5xl font-bold mb-8 text-center
            bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent
            font-sans;
   }
 
-  .card {
-    @apply bg-[#111111] p-6 rounded-lg 
-           shadow-lg hover:shadow-xl transition-all duration-300
-           border border-[#333333] hover:border-white/30
-           transform hover:-translate-y-1;
-  }
-
-  .nav-link {
-    @apply text-white transition-all duration-300 relative
-           font-sans;
-    text-decoration-line: none;
-  }
-
-  .nav-link:hover {
-    @apply text-gray-300;
-    text-decoration-line: line-through;
-    text-decoration-thickness: 2px;
-    text-decoration-color: rgb(107 114 128); /* text-gray-500 */
-  }
-
+  /* Liens albums */
   .album-link {
-    @apply text-white hover:text-gray-300 transition-colors duration-300
-           flex items-center gap-2
-           font-sans;
+    @apply link-base flex items-center gap-2;
+  }
+
+  /* Style spécifique pour le menu mobile */
+  .mobile-nav-link {
+    @apply text-white relative font-sans
+           transition-all duration-300
+           after:absolute after:bottom-[-4px] after:left-1/2
+           after:w-0 after:h-[1px] after:bg-white
+           after:transition-all after:duration-300
+           after:-translate-x-1/2
+           hover:text-white/90
+           before:absolute before:inset-0
+           before:bg-white/0 before:transition-colors
+           before:duration-300
+           inline-block
+           py-2;
+  }
+
+  .nav-link:hover, .mobile-nav-link:hover {
+    @apply after:w-full;
+  }
+
+  .nav-link:hover::before, .mobile-nav-link:hover::before {
+    @apply bg-white/5;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+
+  .nav-link.active, .mobile-nav-link.active {
+    @apply after:w-full
+           after:bg-gradient-to-r after:from-white/50 after:via-white after:to-white/50
+           after:animate-[shimmer_2s_linear_infinite]
+           after:bg-[length:200%_100%];
   }
 }
 
-/* Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -112,15 +293,9 @@
 }
 
 @keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
 }
 
 .animate-fade-in {
