@@ -1,0 +1,13 @@
+.carouselContainer {
+  display: flex;
+  justify-content: center; /* Centre horizontalement */
+  align-items: center; /* Centre verticalement si nécessaire */
+  width: 100%; /* Assurez-vous que le conteneur prend toute la largeur */
+  margin: auto; /* Pour centrer le conteneur */
+}
+
+.image {
+  width: 100%; /* Ajustez la largeur de l'image selon vos besoins */
+  height: auto; /* Pour garder le ratio d'aspect */
+  border-radius: 10px; /* Pour un effet moderne */
+}

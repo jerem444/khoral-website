@@ -1,0 +1,16 @@
+.container {
+  @apply min-h-screen;
+}
+
+.content {
+  @apply pt-16 md:pt-20 p-4 md:p-8;
+}
+
+.portfolioContainer {
+  display: flex;
+  flex-direction: column; /* Pour empiler les éléments verticalement */
+  align-items: center; /* Centre horizontalement */
+  justify-content: center; /* Centre verticalement si nécessaire */
+  width: 100%; /* Assurez-vous que le conteneur prend toute la largeur */
+  margin: auto; /* Pour centrer le conteneur */
+}

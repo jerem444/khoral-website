@@ -11,9 +11,10 @@ export interface Concert {
   description?: string;
   ticketUrl?: string;
   price?: number;
+  image?: string;
 }
 
-export default async function ConcertsPage() {
+const ConcertsPage = async () => {
   const response = await client.queries.concertsConnection();
   const concerts = response.data.concertsConnection.edges?.map((edge: any) => edge.node.concerts).flat() || [];
 
@@ -58,3 +59,5 @@ export default async function ConcertsPage() {
     </main>
   );
 } 
+
+export default ConcertsPage;

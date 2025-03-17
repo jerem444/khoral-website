@@ -60,6 +60,10 @@ export default function ConcertInfo({ concert, variant = 'card' }: ConcertInfoPr
           Réserver
         </a>
       )}
+
+      {concert.image && (
+        <img src={concert.image} alt={concert.venue} />
+      )}
     </div>
   );
 } 

@@ -2,8 +2,9 @@
   "concerts": [
     {
       "venue": "Le Floride",
-      "date": "2025-03-21T23:00:00.000Z",
+      "date": "2025-03-22T20:00:00.000Z",
       "city": "Nantes",
+      "image": "/src/assets/images/fly.png",
       "price": 8
     },
     {
