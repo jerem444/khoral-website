@@ -18,32 +18,56 @@ export default defineConfig({
   schema: {
     collections: [
       {
-        name: "portfolio",
-        label: "Portfolio",
-        path: "src/data/portfolio",
+        name: "photos",
+        label: "Photos",
+        path: "src/data/photos",
         format: "json",
+        ui: {
+          filename: {
+            readonly: true,
+            slugify: values => "photos.json",
+          },
+        },
         fields: [
           {
-            type: "string",
-            name: "title",
-            label: "Titre",
-            required: true,
-          },
-          {
-            type: "image",
-            name: "image",
-            label: "Image",
-            required: true,
-          },
-          {
-            type: "string",
-            name: "description",
-            label: "Description",
+            type: "object",
+            name: "photos",
+            label: "Photos",
+            list: true,
             ui: {
-              component: "textarea",
+              itemProps: (item) => ({
+                label: `${item?.title} - ${item?.date}`,
+              }),
             },
-          },
-        ],
+            fields: [
+              {
+                type: "string",
+                name: "title",
+                label: "Titre",
+                required: true,
+              },
+              {
+                type: "datetime",
+                name: "date",
+                label: "Date",
+                required: true,
+              },
+              {
+                type: "image",
+                name: "image",
+                label: "Image",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "description",
+                label: "Description",
+                ui: {
+                  component: "textarea",
+                },
+              },
+            ]
+          }],
       },
       {
         name: "concerts",
@@ -68,53 +92,54 @@ export default defineConfig({
               }),
             },
             fields: [
-          {
-            type: "string",
-            name: "venue",
-            label: "Salle",
-            required: true,
-          },
-          {
-            type: "datetime",
-            name: "date",
-            label: "Date et heure",
-            required: true,
-          },
-          {
-            type: "string",
-            name: "city",
-            label: "Ville",
-            required: true,
-          },
-          {
-            type: "string",
-            name: "address",
-            label: "Adresse",
-          },
-          {
-            type: "string",
-            name: "ticketUrl",
-            label: "Lien billetterie",
-          },
-          {
-            type: "string",
-            name: "description",
-            label: "Description",
-            ui: {
-              component: "textarea",
-            },
-          },
-          {
-            type: "image",
-            name: "image",
-            label: "Image (affiche)",
-          },
-          {
-            type: "number",
-            name: "price",
-            label: "Prix (€)",
-          }
-        ]}],
+              {
+                type: "string",
+                name: "venue",
+                label: "Salle",
+                required: true,
+              },
+              {
+                type: "datetime",
+                name: "date",
+                label: "Date et heure",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "city",
+                label: "Ville",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "address",
+                label: "Adresse",
+              },
+              {
+                type: "string",
+                name: "ticketUrl",
+                label: "Lien billetterie",
+              },
+              {
+                type: "string",
+                name: "description",
+                label: "Description",
+                ui: {
+                  component: "textarea",
+                },
+              },
+              {
+                type: "image",
+                name: "image",
+                label: "Image (affiche)",
+              },
+              {
+                type: "number",
+                name: "price",
+                label: "Prix (€)",
+              }
+            ]
+          }],
       },
     ],
   },
