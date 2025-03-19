@@ -12,12 +12,9 @@
 /* Styles de base */
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgb(var(--background-end-rgb))
-  )
-  rgb(var(--background-start-rgb));
+  background: linear-gradient(to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
 
 /* Classes utilitaires */
@@ -66,6 +63,7 @@ body {
   0% {
     background-position: -200% center;
   }
+
   100% {
     background-position: 200% center;
   }
@@ -90,22 +88,32 @@ body {
     @apply bg-black text-white font-sans;
     background-color: var(--background);
     color: var(--text);
-    background-image: 
+    background-image:
       radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 20%),
       radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 20%);
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-sans font-bold;
   }
 
   /* S'assurer que tous les textes utilisent Caviar Dreams */
-  p, a, span, div, button {
+  p,
+  a,
+  span,
+  div,
+  button {
     @apply font-sans;
   }
 }
 
 @layer components {
+
   /* Variables communes pour les transitions */
   .transition-standard {
     @apply transition-all duration-300 ease-in-out;
@@ -113,20 +121,12 @@ body {
 
   /* Styles de base pour les liens */
   .link-base {
-    @apply text-white relative font-sans inline-block
-           transition-standard
-           hover:text-white/90;
+    @apply text-white relative font-sans inline-block transition-standard hover:text-white/90;
   }
 
   /* Style de soulignement commun */
   .underline-effect {
-    @apply after:absolute after:bottom-[-4px] after:left-1/2
-           after:w-0 after:h-[1px] after:bg-white
-           after:transition-standard
-           after:-translate-x-1/2
-           before:absolute before:inset-0
-           before:bg-white/0 before:transition-colors
-           before:duration-300;
+    @apply after:absolute after:bottom-[-4px] after:left-1/2 after:w-0 after:h-[1px] after:bg-white after:transition-standard after:-translate-x-1/2 before:absolute before:inset-0 before:bg-white/0 before:transition-colors before:duration-300;
   }
 
   .underline-effect:hover {
@@ -139,21 +139,15 @@ body {
 
   /* Styles des boutons */
   .btn-base {
-    @apply px-6 py-3 rounded-full 
-           transition-standard
-           shadow-lg hover:shadow-xl hover:shadow-white/10
-           transform hover:-translate-y-0.5
-           font-sans;
+    @apply px-6 py-3 rounded-full transition-standard shadow-lg hover:shadow-xl hover:shadow-white/10 transform hover:-translate-y-0.5 font-sans;
   }
 
   .btn-primary {
-    @apply btn-base bg-white text-black 
-           hover:bg-gray-200;
+    @apply btn-base bg-white text-black hover:bg-gray-200;
   }
 
   .btn-secondary {
-    @apply btn-base border-2 border-white text-white 
-           hover:bg-white hover:text-black;
+    @apply btn-base border-2 border-white text-white hover:bg-white hover:text-black;
   }
 
   /* Navigation */
@@ -162,10 +156,7 @@ body {
   }
 
   .nav-link.active {
-    @apply after:w-full
-           after:bg-gradient-to-r after:from-white/50 after:via-white after:to-white/50
-           after:animate-[shimmer_2s_linear_infinite]
-           after:bg-[length:200%_100%];
+    @apply after:w-full after:bg-gradient-to-r after:from-white/50 after:via-white after:to-white/50 after:animate-[shimmer_2s_linear_infinite] after:bg-[length:200%_100%];
   }
 
   /* Navbar */
@@ -178,8 +169,7 @@ body {
   }
 
   .navbar-brand {
-    @apply text-xl md:text-2xl font-display font-bold 
-           hover:text-primary transition-standard;
+    @apply text-xl md:text-2xl font-display font-bold hover:text-primary transition-standard;
   }
 
   .navbar-menu-desktop {
@@ -187,8 +177,7 @@ body {
   }
 
   .navbar-menu-mobile {
-    @apply md:hidden absolute top-full left-0 right-0 
-           bg-black flex-col items-center py-4 space-y-4;
+    @apply md:hidden absolute top-full left-0 right-0 bg-black flex-col items-center py-4 space-y-4;
   }
 
   /* Hamburger */
@@ -226,17 +215,12 @@ body {
 
   /* Cards */
   .card {
-    @apply bg-[#111111] p-6 rounded-lg 
-           shadow-lg hover:shadow-xl transition-standard
-           border border-[#333333] hover:border-white/30
-           transform hover:-translate-y-1;
+    @apply bg-[#111111] p-6 rounded-lg shadow-lg hover:shadow-xl transition-standard border border-[#333333] hover:border-white/30 transform hover:-translate-y-1;
   }
 
   /* Titres */
   .section-title {
-    @apply text-4xl md:text-5xl font-bold mb-8 text-center
-           bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent
-           font-sans;
+    @apply text-4xl md:text-5xl font-bold mb-8 text-center bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent font-sans;
   }
 
   /* Liens albums */
@@ -246,38 +230,32 @@ body {
 
   /* Style spécifique pour le menu mobile */
   .mobile-nav-link {
-    @apply text-white relative font-sans
-           transition-all duration-300
-           after:absolute after:bottom-[-4px] after:left-1/2
-           after:w-0 after:h-[1px] after:bg-white
-           after:transition-all after:duration-300
-           after:-translate-x-1/2
-           hover:text-white/90
-           before:absolute before:inset-0
-           before:bg-white/0 before:transition-colors
-           before:duration-300
-           inline-block
-           py-2;
+    @apply text-white relative font-sans transition-all duration-300 after:absolute after:bottom-[-4px] after:left-1/2 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 after:-translate-x-1/2 hover:text-white/90 before:absolute before:inset-0 before:bg-white/0 before:transition-colors before:duration-300 inline-block py-2;
   }
 
-  .nav-link:hover, .mobile-nav-link:hover {
+  .nav-link:hover,
+  .mobile-nav-link:hover {
     @apply after:w-full;
   }
 
-  .nav-link:hover::before, .mobile-nav-link:hover::before {
+  .nav-link:hover::before,
+  .mobile-nav-link:hover::before {
     @apply bg-white/5;
   }
 
   @keyframes shimmer {
-    0% { background-position: -200% center; }
-    100% { background-position: 200% center; }
+    0% {
+      background-position: -200% center;
+    }
+
+    100% {
+      background-position: 200% center;
+    }
   }
 
-  .nav-link.active, .mobile-nav-link.active {
-    @apply after:w-full
-           after:bg-gradient-to-r after:from-white/50 after:via-white after:to-white/50
-           after:animate-[shimmer_2s_linear_infinite]
-           after:bg-[length:200%_100%];
+  .nav-link.active,
+  .mobile-nav-link.active {
+    @apply after:w-full after:bg-gradient-to-r after:from-white/50 after:via-white after:to-white/50 after:animate-[shimmer_2s_linear_infinite] after:bg-[length:200%_100%];
   }
 }
 
@@ -286,6 +264,7 @@ body {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -293,9 +272,17 @@ body {
 }
 
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 .animate-fade-in {
@@ -322,4 +309,17 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary-dark);
-} 
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  color: white;
+}
+
+.swiper-pagination .swiper-pagination-bullet {
+  background-color: white;
+}
+
+.swiper-pagination .swiper-pagination-bullet-active {
+  background-color: white;
+}
