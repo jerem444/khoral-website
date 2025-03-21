@@ -1,12 +1,11 @@
 import React from 'react';
 import PhotoCarousel from '@/components/PhotoCarousel';
-import { client } from "../../../tina/__generated__/client";
 import Navbar from '@/components/Navbar';
 import styles from './page.module.css';
+import { client } from '../lib/tina-client';
 
 const Portfolio = async () => {
-  const response = await client.queries.photosConnection();
-  const photos = response.data.photosConnection.edges?.map((edge: any) => edge.node.photos).flat() || [];
+  const photos = await client.getAllPhotos();
 
   return (
     <main className={styles.container}>

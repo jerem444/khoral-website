@@ -1,30 +1,19 @@
-import { client } from "../../../tina/__generated__/client";
 import Navbar from "@/components/Navbar";
-import ConcertInfo from "@/components/ConcertInfo";
 import styles from './page.module.css';
-
-export interface Concert {
-  venue: string;
-  city: string;
-  date: string;
-  address?: string;
-  description?: string;
-  ticketUrl?: string;
-  price?: number;
-  image?: string;
-}
+import { client } from "../lib/tina-client";
+import { ConcertsConcerts } from "../../../tina/__generated__/types";
+import ConcertInfo from "@/components/ConcertInfo";
 
 const ConcertsPage = async () => {
-  const response = await client.queries.concertsConnection();
-  const concerts = response.data.concertsConnection.edges?.map((edge: any) => edge.node.concerts).flat() || [];
+  const concerts = await client.getAllConcerts();
 
   // Séparer les concerts futurs et passés
   const now = new Date();
-  const futureConcerts = concerts.filter((concert: Concert) => new Date(concert.date) > now);
-  const pastConcerts = concerts.filter((concert: Concert) => new Date(concert.date) <= now);
+  const futureConcerts = concerts.filter((concert: ConcertsConcerts) => new Date(concert.date) > now);
+  const pastConcerts = concerts.filter((concert: ConcertsConcerts) => new Date(concert.date) <= now);
 
   // Trier les concerts futurs par date
-  futureConcerts.sort((a: Concert, b: Concert) => new Date(a.date).getTime() - new Date(b.date).getTime());
+  futureConcerts.sort((a: ConcertsConcerts, b: ConcertsConcerts) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
   return (
     <main className={styles.container}>
@@ -33,7 +22,7 @@ const ConcertsPage = async () => {
         {/* Section pour les concerts futurs */}
         <h1 className={styles.title}>Prochains Concerts</h1>
         <div className={styles.concertsList}>
-          {futureConcerts.map((concert: Concert, index: number) => (
+          {futureConcerts.map((concert: ConcertsConcerts, index: number) => (
             <div key={index} className={styles.concertCard}>
               <ConcertInfo concert={concert} variant="card" />
             </div>
@@ -45,7 +34,7 @@ const ConcertsPage = async () => {
 
           {/* Section pour les concerts passés */}
           <h1 className={styles.title}>Concerts passés</h1>
-          {pastConcerts.map((concert: Concert, index: number) => (
+          {pastConcerts.map((concert: ConcertsConcerts, index: number) => (
             <div key={index} className={styles.concertCard}>
               <ConcertInfo concert={concert} variant="card" />
             </div>

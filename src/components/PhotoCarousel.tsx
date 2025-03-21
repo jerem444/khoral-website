@@ -2,22 +2,18 @@
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, EffectCoverflow, Autoplay } from "swiper/modules";
+import type { Swiper as SwiperType, NavigationOptions } from 'swiper/types';
 import { useRef } from 'react';
+import Image from 'next/image';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-coverflow';
 import styles from './PhotoCarousel.module.css';
-
-interface Photo {
-  image: string;
-  title: string;
-  description: string;
-  date: Date;
-}
+import { PhotosPhotos } from "../../tina/__generated__/types";
 
 interface PhotoCarouselProps {
-  photos: Photo[];
+  photos: PhotosPhotos[];
 }
 
 const PhotoCarousel: React.FC<PhotoCarouselProps> = ({ photos }) => {
@@ -51,13 +47,14 @@ const PhotoCarousel: React.FC<PhotoCarouselProps> = ({ photos }) => {
             prevEl: prevRef.current,
             nextEl: nextRef.current,
           }}
-          onInit={(swiper) => {
-            // @ts-ignore
-            swiper.params.navigation.prevEl = prevRef.current;
-            // @ts-ignore
-            swiper.params.navigation.nextEl = nextRef.current;
-            swiper.navigation.init();
-            swiper.navigation.update();
+          onInit={(swiper: SwiperType) => {
+            const nav = swiper.params.navigation as NavigationOptions;
+            if (nav) {
+              nav.prevEl = prevRef.current;
+              nav.nextEl = nextRef.current;
+              swiper.navigation.init();
+              swiper.navigation.update();
+            }
           }}
           loop={true}
           autoplay={{
@@ -75,7 +72,15 @@ const PhotoCarousel: React.FC<PhotoCarouselProps> = ({ photos }) => {
             <SwiperSlide key={index} className={styles.swiperSlide}>
               <div className={styles.slideContent}>
                 <div className={styles.imageContainer}>
-                  <img src={photo.image} alt={photo.title} className={styles.image} />
+                  <Image 
+                    src={photo.image} 
+                    alt={photo.title} 
+                    className={styles.image}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    priority={index < 2}
+                    style={{ objectFit: 'cover' }}
+                  />
                   <div className={styles.photoOverlay}>
                     <div className={styles.photoInfo}>
                       <h3 className={styles.photoTitle}>{photo.title}</h3>

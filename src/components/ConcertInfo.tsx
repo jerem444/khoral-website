@@ -1,8 +1,10 @@
-import { Concert } from '@/app/concerts/page';
 import styles from './ConcertInfo.module.css';
+import { ConcertsConcerts } from '../../tina/__generated__/types';
+import Image from 'next/image';
+
 
 interface ConcertInfoProps {
-  concert: Concert;
+  concert: ConcertsConcerts;
   variant?: 'card' | 'compact';
 }
 
@@ -30,39 +32,54 @@ export default function ConcertInfo({ concert, variant = 'card' }: ConcertInfoPr
 
   return (
     <div className={`${styles.concertInfo} ${styles[variant]}`}>
-      <div className={styles.venueInfo}>
-        <h3 className={styles.venueName}>{concert.venue}</h3>
-        <p className={styles.city}>{concert.city}</p>
-        {concert.address && variant === 'card' && (
-          <p className={styles.address}>{concert.address}</p>
+      <div className={styles.contentContainer}>
+        <div className={styles.infoContainer}>
+          <div className={styles.venueInfo}>
+            <h3 className={styles.venueName}>{concert.venue}</h3>
+            <p className={styles.city}>{concert.city}</p>
+            {concert.address && variant === 'card' && (
+              <p className={styles.address}>{concert.address}</p>
+            )}
+          </div>
+          
+          <div className={styles.dateInfo}>
+            <p className={styles.date}>{formatDate(concertDate)}</p>
+            <p className={styles.time}>{formatTime(concertDate)}</p>
+            {concert.price && variant === 'card' && (
+              <p className={styles.price}>{concert.price}€</p>
+            )}
+          </div>
+
+          {concert.description && variant === 'card' && (
+            <p className={styles.description}>{concert.description}</p>
+          )}
+        </div>
+
+        {concert.image && (
+          <div className={styles.imageWrapper}>
+            <Image 
+              src={concert.image} 
+              alt={concert.venue}
+              width={300}
+              height={300}
+              style={{ objectFit: 'cover' }}
+              className={styles.concertImage}
+            />
+          </div>
         )}
       </div>
       
-      <div className={styles.dateInfo}>
-        <p className={styles.date}>{formatDate(concertDate)}</p>
-        <p className={styles.time}>{formatTime(concertDate)}</p>
-        {concert.price && variant === 'card' && (
-          <p className={styles.price}>{concert.price}€</p>
-        )}
-      </div>
-
-      {concert.description && variant === 'card' && (
-        <p className={styles.description}>{concert.description}</p>
-      )}
-
       {concert.ticketUrl && (
-        <a
-          href={concert.ticketUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.button}
-        >
-          Réserver
-        </a>
-      )}
-
-      {concert.image && (
-        <img src={concert.image} alt={concert.venue} />
+        <div className={styles.buttonContainer}>
+          <a
+            href={concert.ticketUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.button}
+          >
+            Réserver
+          </a>
+        </div>
       )}
     </div>
   );

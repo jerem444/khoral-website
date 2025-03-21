@@ -2,33 +2,13 @@ import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import ConcertInfo from '@/components/ConcertInfo';
 import VideoGrid from '@/components/VideoGrid';
-import { client } from "../../tina/__generated__/client";
-import { Concert } from "@/app/concerts/page";
 import styles from './page.module.css';
+import { client } from './lib/tina-client';
 
-async function getNextConcert() {
-  const response = await client.queries.concertsConnection();
-  const concerts = response.data.concertsConnection.edges?.map((edge: any) => edge.node.concerts).flat() || [];
-  
-  // Filtrer les concerts futurs et les trier par date
-  const futureConcerts = concerts
-    .filter((concert: Concert) => new Date(concert.date) > new Date())
-    .sort((a: Concert, b: Concert) => new Date(a.date).getTime() - new Date(b.date).getTime());
-  
-  return futureConcerts[0]; // Retourne le prochain concert ou undefined
-}
-
-// Fonction pour récupérer la dernière vidéo
-async function getLatestVideo() {
-  const response = await client.queries.videosConnection();
-  const videos = response.data.videosConnection.edges?.map((edge: any) => edge.node.videos).flat() || [];
-  return videos[0]; 
-
-}
 
 export default async function Home() {
-  const nextConcert = await getNextConcert();
-  const latestVideo = await getLatestVideo();
+  const nextConcert = await client.getNextConcert();
+  const latestVideo = await client.getLatestVideo()
 
   return (
     <main className={styles.container}>
@@ -62,7 +42,7 @@ export default async function Home() {
         </div>
 
         <section className={styles.videosSection}>
-          <h2 className={styles.sectionTitle}>Notre Dernière Vidéo</h2>
+          <h2 className={styles.sectionTitle}>Dernière Vidéo</h2>
           {latestVideo && <VideoGrid videos={[latestVideo]} />}
         </section>
       </section>
