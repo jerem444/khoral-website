@@ -18,13 +18,14 @@
       "price": 20
     },
     {
-      "venue": "La Cigale",
-      "date": "2025-05-10T20:00:00.000Z",
-      "city": "Paris",
-      "address": "120 Boulevard de Rochechouart, 75018 Paris",
-      "ticketUrl": "https://lacigale.fr",
-      "description": "Concert de Khoral avec des invités spéciaux.",
-      "price": 15
+      "venue": "Feu Bar",
+      "date": "2025-03-06T23:00:00.000Z",
+      "city": "Nantes",
+      "address": "87 rue Maréchal Joffre",
+      "ticketUrl": "https://www.facebook.com/events/645611284818404",
+      "description": "",
+      "image": "/src/assets/images/feu_bar.jpg",
+      "price": 0
     }
   ]
 }
