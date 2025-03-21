@@ -1,0 +1,7 @@
+.container {
+  @apply min-h-screen;
+}
+
+.content {
+  @apply pt-16 md:pt-20 p-4 md:p-8;
+}

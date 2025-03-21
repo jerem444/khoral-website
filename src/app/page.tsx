@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import ConcertInfo from '@/components/ConcertInfo';
+import VideoGrid from '@/components/VideoGrid';
 import { client } from "../../tina/__generated__/client";
 import { Concert } from "@/app/concerts/page";
 import styles from './page.module.css';
@@ -17,8 +18,17 @@ async function getNextConcert() {
   return futureConcerts[0]; // Retourne le prochain concert ou undefined
 }
 
+// Fonction pour récupérer la dernière vidéo
+async function getLatestVideo() {
+  const response = await client.queries.videosConnection();
+  const videos = response.data.videosConnection.edges?.map((edge: any) => edge.node.videos).flat() || [];
+  return videos[0]; 
+
+}
+
 export default async function Home() {
   const nextConcert = await getNextConcert();
+  const latestVideo = await getLatestVideo();
 
   return (
     <main className={styles.container}>
@@ -52,25 +62,8 @@ export default async function Home() {
         </div>
 
         <section className={styles.videosSection}>
-          <h2 className={styles.sectionTitle}>Nos Dernières Vidéos</h2>
-          <div className={styles.videosGrid}>
-            {/* Placeholder pour les vidéos */}
-            <div className={styles.videoCard}>
-              <div className={styles.videoThumbnail}></div>
-              <h3 className={styles.videoTitle}>Titre de la vidéo</h3>
-              <p className={styles.videoDescription}>Description de la vidéo</p>
-            </div>
-            <div className={styles.videoCard}>
-              <div className={styles.videoThumbnail}></div>
-              <h3 className={styles.videoTitle}>Titre de la vidéo</h3>
-              <p className={styles.videoDescription}>Description de la vidéo</p>
-            </div>
-            <div className={styles.videoCard}>
-              <div className={styles.videoThumbnail}></div>
-              <h3 className={styles.videoTitle}>Titre de la vidéo</h3>
-              <p className={styles.videoDescription}>Description de la vidéo</p>
-            </div>
-          </div>
+          <h2 className={styles.sectionTitle}>Notre Dernière Vidéo</h2>
+          {latestVideo && <VideoGrid videos={[latestVideo]} />}
         </section>
       </section>
     </main>

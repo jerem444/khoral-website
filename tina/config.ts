@@ -141,6 +141,53 @@ export default defineConfig({
             ]
           }],
       },
+      {
+        name: "videos",
+        label: "Vidéos",
+        path: "src/data/videos",
+        format: "json",
+        ui: {
+          filename: {
+            readonly: true,
+            slugify: values => "videos.json",
+          },
+        },
+        fields: [
+          {
+            type: "object",
+            name: "videos",
+            label: "Vidéos",
+            list: true, // Permet d'ajouter plusieurs vidéos
+            ui: {
+              itemProps: (item) => ({
+                label: item?.title, // Affiche le titre de la vidéo dans la liste
+              }),
+            },
+            fields: [
+              {
+                type: "string",
+                name: "title",
+                label: "Titre",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "url",
+                label: "URL de la vidéo YouTube",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "description",
+                label: "Description",
+                ui: {
+                  component: "textarea",
+                },
+              },
+            ],
+          },
+        ],
+      }
     ],
   },
 }); 
