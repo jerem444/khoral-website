@@ -8,13 +8,14 @@
       "price": 8
     },
     {
-      "venue": "Le Petit Bain",
-      "date": "2025-04-18T22:00:00.000Z",
-      "city": "Paris",
-      "address": "7 Port de la Gare, 75013 Paris",
-      "ticketUrl": "https://petitbain.org",
-      "description": "Venez découvrir Khoral en live pour une soirée exceptionnelle !",
-      "price": 12
+      "venue": "Le Ferrailleur",
+      "date": "2025-05-30T22:00:00.000Z",
+      "city": "Nantes",
+      "address": "21 Quai des Antilles, 44200 Nantes",
+      "ticketUrl": "https://dice.fm/partner/black-speech-booking/event/pylpww-je-taime-potochkine-khoral-31st-may-le-ferrailleur-nantes-tickets",
+      "description": "JE T'AIME + POTOCHKINE + KHORAL",
+      "image": "/src/assets/images/32b5fa86-431a-42bc-83f6-4339f612ee39.jpg",
+      "price": 20
     },
     {
       "venue": "La Cigale",
