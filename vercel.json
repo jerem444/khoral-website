@@ -1,12 +1,12 @@
 {
   "version": 2,
   "buildCommand": "tinacms build && next build",
-  "devCommand": "npm run dev",
+  "devCommand": "tinacms dev -c \"next dev\"",
   "installCommand": "npm install",
   "framework": "nextjs",
   "regions": ["cdg1"],
   "env": {
-    "NEXT_PUBLIC_SITE_URL": "https://khoral.vercel.app",
+    "NEXT_PUBLIC_SITE_URL": "https://khoral-website.vercel.app",
     "NEXT_PUBLIC_SITE_NAME": "Khoral-website"
   }
 } 
