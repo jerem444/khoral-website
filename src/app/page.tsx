@@ -3,7 +3,7 @@ import Navbar from '@/components/Navbar';
 import ConcertInfo from '@/components/ConcertInfo';
 import VideoGrid from '@/components/VideoGrid';
 import styles from './page.module.css';
-import { client } from './lib/tina-client';
+import { client } from '../lib/tina-client';
 
 
 export default async function Home() {

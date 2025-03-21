@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from '@/components/Navbar';
 import styles from './page.module.css';
 import VideoGrid from '@/components/VideoGrid';
-import { client } from '../lib/tina-client';
+import { client } from '../../lib/tina-client';
 
 
 const Videos = async () => {

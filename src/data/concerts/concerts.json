@@ -2,14 +2,14 @@
   "concerts": [
     {
       "venue": "Le Floride",
-      "date": "2025-03-22T20:00:00.000Z",
+      "date": "2025-03-22T19:00:00.000Z",
       "city": "Nantes",
       "image": "/src/assets/images/fly.png",
       "price": 8
     },
     {
       "venue": "Le Ferrailleur",
-      "date": "2025-05-30T22:00:00.000Z",
+      "date": "2025-05-31T19:00:00.000Z",
       "city": "Nantes",
       "address": "21 Quai des Antilles, 44200 Nantes",
       "ticketUrl": "https://dice.fm/partner/black-speech-booking/event/pylpww-je-taime-potochkine-khoral-31st-may-le-ferrailleur-nantes-tickets",
@@ -19,7 +19,7 @@
     },
     {
       "venue": "Feu Bar",
-      "date": "2025-03-06T23:00:00.000Z",
+      "date": "2025-03-07T20:00:00.000Z",
       "city": "Nantes",
       "address": "87 rue Maréchal Joffre",
       "ticketUrl": "https://www.facebook.com/events/645611284818404",

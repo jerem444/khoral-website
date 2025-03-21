@@ -1,4 +1,4 @@
-import { client as tinaClient } from "../../../tina/__generated__/client";
+import { client as tinaClient } from "../../tina/__generated__/client";
 import { 
   PhotosPhotos, 
   PhotosConnectionQueryVariables,
@@ -6,7 +6,7 @@ import {
   ConcertsConnectionQueryVariables,
   VideosVideos,
   VideosConnectionQueryVariables
-} from "../../../tina/__generated__/types";
+} from "../../tina/__generated__/types";
 
 export const client = {
   ...tinaClient,

@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import styles from './page.module.css';
-import { client } from "../lib/tina-client";
+import { client } from "../../lib/tina-client";
 import { ConcertsConcerts } from "../../../tina/__generated__/types";
 import ConcertInfo from "@/components/ConcertInfo";
 

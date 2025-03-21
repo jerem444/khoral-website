@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['img.youtube.com'],
+    domains: ['img.youtube.com','assets.tina.io'],
   },
 async rewrites() {
     return [

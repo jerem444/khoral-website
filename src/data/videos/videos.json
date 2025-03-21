@@ -1,22 +1,16 @@
 {
   "videos": [
     {
-      "title": "4",
-      "url": "https://www.youtube.com/watch?v=kH5NL9CAuPI"
-    },
-    {
-      "title": "Dark Mind",
-      "url": "https://www.youtube.com/watch?v=o2ywewp3ufc",
-      "description": "....bljufkdlmfjsdzjksel"
-    },
-    {
-      "title": "Way to dusty death video clip",
+      "title": "The way to dusty death",
+      "date": "2025-02-28T23:00:00.000Z",
       "url": "https://www.youtube.com/watch?v=kH5NL9CAuPI",
-      "description": "....blablabla"
+      "description": ""
     },
     {
-      "title": "3",
-      "url": "https://www.youtube.com/watch?v=kH5NL9CAuPI"
+      "title": "Dark mind",
+      "date": "2025-02-25T23:00:00.000Z",
+      "url": "https://www.youtube.com/watch?v=o2ywewp3ufc",
+      "description": ""
     }
   ]
 }

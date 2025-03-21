@@ -3,7 +3,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, EffectCoverflow, Autoplay } from "swiper/modules";
 import type { Swiper as SwiperType, NavigationOptions } from 'swiper/types';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -19,6 +19,24 @@ interface PhotoCarouselProps {
 const PhotoCarousel: React.FC<PhotoCarouselProps> = ({ photos }) => {
   const prevRef = useRef<HTMLDivElement>(null);
   const nextRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  
+  // Détecter si on est sur mobile
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    // Vérifier au chargement
+    checkIsMobile();
+    
+    // Vérifier au redimensionnement
+    window.addEventListener('resize', checkIsMobile);
+    
+    return () => {
+      window.removeEventListener('resize', checkIsMobile);
+    };
+  }, []);
   
   return (
     <div className={styles.carouselContainer}>
@@ -43,17 +61,19 @@ const PhotoCarousel: React.FC<PhotoCarouselProps> = ({ photos }) => {
             clickable: true,
             dynamicBullets: true,
           }}
-          navigation={{
+          navigation={isMobile ? false : {
             prevEl: prevRef.current,
             nextEl: nextRef.current,
           }}
           onInit={(swiper: SwiperType) => {
-            const nav = swiper.params.navigation as NavigationOptions;
-            if (nav) {
-              nav.prevEl = prevRef.current;
-              nav.nextEl = nextRef.current;
-              swiper.navigation.init();
-              swiper.navigation.update();
+            if (!isMobile) {
+              const nav = swiper.params.navigation as NavigationOptions;
+              if (nav) {
+                nav.prevEl = prevRef.current;
+                nav.nextEl = nextRef.current;
+                swiper.navigation.init();
+                swiper.navigation.update();
+              }
             }
           }}
           loop={true}

@@ -102,6 +102,10 @@ export default defineConfig({
                 name: "date",
                 label: "Date et heure",
                 required: true,
+                ui: {
+                  dateFormat: "YYYY-MM-DD",
+                  timeFormat: "HH:mm"
+                }
               },
               {
                 type: "string",
@@ -167,6 +171,12 @@ export default defineConfig({
                 type: "string",
                 name: "title",
                 label: "Titre",
+                required: true,
+              },
+              {
+                type: "datetime",
+                name: "date",
+                label: "Date",
                 required: true,
               },
               {
