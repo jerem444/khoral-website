@@ -3,14 +3,20 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import 'swiper/swiper-bundle.css';
-import { Photo } from '@/app/portfolio/page';
 import styles from './PhotoCarousel.module.css';
 
-interface PhotoCarouselProps {
-  images: Photo[];
+interface Photo {
+  image: string;
+  title: string;
+  description: string;
+  date : Date;
 }
 
-const PhotoCarousel: React.FC<PhotoCarouselProps> = ({ images }) => {
+interface PhotoCarouselProps {
+  photos: Photo[];
+}
+
+const PhotoCarousel: React.FC<PhotoCarouselProps> = ({ photos }) => {
   return (
     <div className={styles.carouselContainer}
     >
@@ -26,9 +32,9 @@ const PhotoCarousel: React.FC<PhotoCarouselProps> = ({ images }) => {
           1024: { slidesPerView: 3 },
         }}
       >
-        {images.map((image, index) => (
+        {photos.map((photo, index) => (
           <SwiperSlide key={index}>
-            <img src={image.image} alt={`Photo ${index + 1}`} className={styles.image} />
+            <img src={photo.image} alt={`Photo ${index + 1}`} className={styles.image} />
           </SwiperSlide>
         ))}
       </Swiper>

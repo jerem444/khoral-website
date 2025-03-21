@@ -9,6 +9,16 @@
       "title": "photo1",
       "date": "2025-03-16T23:00:00.000Z",
       "image": "/src/assets/images/photo1.png"
+    },
+    {
+      "title": "photo2",
+      "date": "2025-03-17T23:00:00.000Z",
+      "image": "/src/assets/images/fly.png"
+    },
+    {
+      "title": "photo1",
+      "date": "2025-03-16T23:00:00.000Z",
+      "image": "/src/assets/images/photo1.png"
     }
   ]
 }

@@ -13,7 +13,7 @@ const Portfolio = async () => {
       <Navbar />
       <div className={styles.content}>
         <div className={styles.portfolioContainer}>
-          <PhotoCarousel images={photos} />
+          <PhotoCarousel photos={photos} />
         </div>
       </div>
     </main>
