@@ -4,8 +4,8 @@ import {
   PhotosConnectionQueryVariables,
   ConcertPartsFragment,
   ConcertConnectionQueryVariables,
-  VideosVideos,
-  VideosConnectionQueryVariables
+  VideoPartsFragment,
+  VideoConnectionQueryVariables
 } from "../../tina/__generated__/types";
 
 // Fonction utilitaire pour transformer les edges en tableau typé
@@ -23,7 +23,7 @@ export const client = {
   },
 
   // Concerts
-  async getNextConcert(): Promise<ConcertPartsFragment> {
+  async getNextConcert(): Promise<ConcertPartsFragment | undefined> {
     const now = new Date().toISOString();
     const variables: ConcertConnectionQueryVariables = {
       sort: "date",
@@ -36,17 +36,18 @@ export const client = {
   },
 
   // Vidéos
-  async getLatestVideo(): Promise<VideosVideos | undefined> {
-    const variables: VideosConnectionQueryVariables = { last: 1 };
-    const response = await tinaClient.queries.videosConnection(variables);
-    const nodes = mapEdgesToNodes<{ videos: VideosVideos[] }>(response.data.videosConnection.edges);
-    return nodes[0]?.videos?.[0];
+  async getLatestVideo(): Promise<VideoPartsFragment | undefined> {
+    const variables: VideoConnectionQueryVariables = {
+      sort: "date",
+      last: 1
+    };
+    const response = await tinaClient.queries.videoConnection(variables);
+    return mapEdgesToNodes<VideoPartsFragment>(response.data.videoConnection.edges)[0];
   },
 
-  async getAllVideos(variables?: VideosConnectionQueryVariables): Promise<VideosVideos[]> {
-    const response = await tinaClient.queries.videosConnection(variables);
-    const nodes = mapEdgesToNodes<{ videos: VideosVideos[] }>(response.data.videosConnection.edges);
-    return nodes.map(node => node.videos).flat().filter(Boolean) as VideosVideos[];
+  async getAllVideos(variables?: VideoConnectionQueryVariables): Promise<VideoPartsFragment[]> {
+    const response = await tinaClient.queries.videoConnection(variables);
+    return mapEdgesToNodes<VideoPartsFragment>(response.data.videoConnection.edges);
   },
 
   async getAllConcerts(variables?: ConcertConnectionQueryVariables): Promise<ConcertPartsFragment[]> {

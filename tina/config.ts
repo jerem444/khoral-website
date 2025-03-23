@@ -137,55 +137,46 @@ export default defineConfig({
         ]
       },
       {
-        name: "videos",
+        name: "video",
         label: "Vidéos",
         path: "src/data/videos",
         format: "json",
         ui: {
           filename: {
-            readonly: true,
-            slugify: values => "videos.json",
+            slugify: (values) => {
+              const date = values.date ? new Date(values.date) : new Date();
+              const dateStr = date.toISOString().split('T')[0];
+              const title = values.title ? values.title.toLowerCase().replace(/[^a-z0-9]+/g, '-') : '';
+              return `${dateStr}-${title}`;
+            },
           },
         },
         fields: [
           {
-            type: "object",
-            name: "videos",
-            label: "Vidéos",
-            list: true, // Permet d'ajouter plusieurs vidéos
+            type: "string",
+            name: "title",
+            label: "Titre",
+            required: true,
+          },
+          {
+            type: "datetime",
+            name: "date",
+            label: "Date",
+            required: true,
+          },
+          {
+            type: "string",
+            name: "url",
+            label: "URL de la vidéo YouTube",
+            required: true,
+          },
+          {
+            type: "string",
+            name: "description",
+            label: "Description",
             ui: {
-              itemProps: (item) => ({
-                label: item?.title, // Affiche le titre de la vidéo dans la liste
-              }),
+              component: "textarea",
             },
-            fields: [
-              {
-                type: "string",
-                name: "title",
-                label: "Titre",
-                required: true,
-              },
-              {
-                type: "datetime",
-                name: "date",
-                label: "Date",
-                required: true,
-              },
-              {
-                type: "string",
-                name: "url",
-                label: "URL de la vidéo YouTube",
-                required: true,
-              },
-              {
-                type: "string",
-                name: "description",
-                label: "Description",
-                ui: {
-                  component: "textarea",
-                },
-              },
-            ],
           },
         ],
       }
