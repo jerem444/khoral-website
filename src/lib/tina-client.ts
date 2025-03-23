@@ -15,10 +15,7 @@ export const client = {
 
   // Photos
   async getAllPhotos(): Promise<PhotosPhotos[]> {
-    const response = await tinaClient.queries.photosConnection({
-      sort: "date",
-      last: LAST_MAX, // Pour avoir les plus récentes en premier
-    });
+    const response = await tinaClient.queries.photosConnection();
     const nodes = mapEdgesToNodes<{ photos: PhotosPhotos[] }>(response.data.photosConnection.edges);
     return nodes.map(node => node.photos).flat().filter(Boolean) as PhotosPhotos[];
   },
