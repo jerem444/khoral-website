@@ -1,57 +1,56 @@
 import { client as tinaClient } from "../../tina/__generated__/client";
-import { 
-  PhotosPhotos, 
+import {
+  PhotosPhotos,
   PhotosConnectionQueryVariables,
-  ConcertsConcerts,
-  ConcertsConnectionQueryVariables,
+  ConcertPartsFragment,
+  ConcertConnectionQueryVariables,
   VideosVideos,
   VideosConnectionQueryVariables
 } from "../../tina/__generated__/types";
 
+// Fonction utilitaire pour transformer les edges en tableau typé
+const mapEdgesToNodes = <T>(edges: any[] | null | undefined): T[] =>
+  (edges?.map(edge => edge?.node).filter(Boolean) || []) as T[];
+
 export const client = {
   ...tinaClient,
-  
+
   // Photos
   async getAllPhotos(variables?: PhotosConnectionQueryVariables): Promise<PhotosPhotos[]> {
     const response = await tinaClient.queries.photosConnection(variables);
-    return response.data.photosConnection.edges
-      ?.map(edge => edge?.node?.photos)
-      .flat()
-      .filter(Boolean) as PhotosPhotos[];
+    const nodes = mapEdgesToNodes<{ photos: PhotosPhotos[] }>(response.data.photosConnection.edges);
+    return nodes.map(node => node.photos).flat().filter(Boolean) as PhotosPhotos[];
   },
-  
+
   // Concerts
-  async getNextConcert(): Promise<ConcertsConcerts | undefined> {
-    const today = new Date().toISOString();
-    const variables: ConcertsConnectionQueryVariables = {
+  async getNextConcert(): Promise<ConcertPartsFragment> {
+    const now = new Date().toISOString();
+    const variables: ConcertConnectionQueryVariables = {
       sort: "date",
-      filter: { concerts: { date: { after: today } } },
+      filter: { date: { after: now } },
       first: 1
     };
-    const response = await tinaClient.queries.concertsConnection(variables);
-    return response?.data?.concertsConnection?.edges?.[0]?.node?.concerts?.[0] || undefined;
+
+    const response = await tinaClient.queries.concertConnection(variables);
+    return mapEdgesToNodes<ConcertPartsFragment>(response.data.concertConnection.edges)[0];
   },
-  
+
   // Vidéos
   async getLatestVideo(): Promise<VideosVideos | undefined> {
     const variables: VideosConnectionQueryVariables = { last: 1 };
     const response = await tinaClient.queries.videosConnection(variables);
-    return response?.data?.videosConnection?.edges?.[0]?.node?.videos?.[0] || undefined;
-  },
-  
-  async getAllVideos(variables?: VideosConnectionQueryVariables): Promise<VideosVideos[]> {
-    const response = await tinaClient.queries.videosConnection(variables);
-    return response.data.videosConnection.edges
-      ?.map(edge => edge?.node?.videos)
-      .flat()
-      .filter(Boolean) as VideosVideos[];
+    const nodes = mapEdgesToNodes<{ videos: VideosVideos[] }>(response.data.videosConnection.edges);
+    return nodes[0]?.videos?.[0];
   },
 
-  async getAllConcerts(variables?: ConcertsConnectionQueryVariables): Promise<ConcertsConcerts[]> {
-    const response = await tinaClient.queries.concertsConnection(variables);
-    return response.data.concertsConnection.edges
-      ?.map(edge => edge?.node?.concerts)
-      .flat()
-      .filter(Boolean) as ConcertsConcerts[];
+  async getAllVideos(variables?: VideosConnectionQueryVariables): Promise<VideosVideos[]> {
+    const response = await tinaClient.queries.videosConnection(variables);
+    const nodes = mapEdgesToNodes<{ videos: VideosVideos[] }>(response.data.videosConnection.edges);
+    return nodes.map(node => node.videos).flat().filter(Boolean) as VideosVideos[];
+  },
+
+  async getAllConcerts(variables?: ConcertConnectionQueryVariables): Promise<ConcertPartsFragment[]> {
+    const response = await tinaClient.queries.concertConnection(variables);
+    return mapEdgesToNodes<ConcertPartsFragment>(response.data.concertConnection.edges);
   }
 };

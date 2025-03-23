@@ -1,10 +1,10 @@
 import styles from './ConcertInfo.module.css';
-import { ConcertsConcerts } from '../../tina/__generated__/types';
+import { ConcertPartsFragment } from '../../tina/__generated__/types';
 import Image from 'next/image';
 
 
 interface ConcertInfoProps {
-  concert: ConcertsConcerts;
+  concert: ConcertPartsFragment;
   variant?: 'card' | 'compact';
 }
 

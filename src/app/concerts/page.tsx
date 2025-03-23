@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import styles from './page.module.css';
 import { client } from "../../lib/tina-client";
-import { ConcertsConcerts } from "../../../tina/__generated__/types";
+import { ConcertPartsFragment } from "../../../tina/__generated__/types";
 import ConcertInfo from "@/components/ConcertInfo";
 
 const ConcertsPage = async () => {
@@ -9,11 +9,11 @@ const ConcertsPage = async () => {
 
   // Séparer les concerts futurs et passés
   const now = new Date();
-  const futureConcerts = concerts.filter((concert: ConcertsConcerts) => new Date(concert.date) > now);
-  const pastConcerts = concerts.filter((concert: ConcertsConcerts) => new Date(concert.date) <= now);
+  const futureConcerts = concerts.filter((concert: ConcertPartsFragment) => new Date(concert.date) > now);
+  const pastConcerts = concerts.filter((concert: ConcertPartsFragment) => new Date(concert.date) <= now);
 
   // Trier les concerts futurs par date
-  futureConcerts.sort((a: ConcertsConcerts, b: ConcertsConcerts) => new Date(a.date).getTime() - new Date(b.date).getTime());
+  futureConcerts.sort((a: ConcertPartsFragment, b: ConcertPartsFragment) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
   return (
     <main className={styles.container}>
@@ -22,7 +22,7 @@ const ConcertsPage = async () => {
         {/* Section pour les concerts futurs */}
         <h1 className={styles.title}>Prochains Concerts</h1>
         <div className={styles.concertsList}>
-          {futureConcerts.map((concert: ConcertsConcerts, index: number) => (
+          {futureConcerts.map((concert: ConcertPartsFragment, index: number) => (
             <div key={index} className={styles.concertCard}>
               <ConcertInfo concert={concert} variant="card" />
             </div>
@@ -34,7 +34,7 @@ const ConcertsPage = async () => {
 
           {/* Section pour les concerts passés */}
           <h1 className={styles.title}>Concerts passés</h1>
-          {pastConcerts.map((concert: ConcertsConcerts, index: number) => (
+          {pastConcerts.map((concert: ConcertPartsFragment, index: number) => (
             <div key={index} className={styles.concertCard}>
               <ConcertInfo concert={concert} variant="card" />
             </div>

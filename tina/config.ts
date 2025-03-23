@@ -69,80 +69,72 @@ export default defineConfig({
           }],
       },
       {
-        name: "concerts",
+        name: "concert",
         label: "Concerts",
         path: "src/data/concerts",
         format: "json",
         ui: {
           filename: {
-            readonly: true,
-            slugify: values => "concerts.json",
+            slugify: (values) => {
+              const date = values.date ? new Date(values.date) : new Date();
+              const dateStr = date.toISOString().split('T')[0];
+              const venue = values.venue ? values.venue.toLowerCase().replace(/[^a-z0-9]+/g, '-') : '';
+              return `${dateStr}-${venue}`;
+            },
           },
         },
         fields: [
           {
-            type: "object",
-            name: "concerts",
-            label: "Concerts",
-            list: true,
+            type: "string",
+            name: "venue",
+            label: "Salle",
+            required: true,
+          },
+          {
+            type: "datetime",
+            name: "date",
+            label: "Date et heure",
+            required: true,
             ui: {
-              itemProps: (item) => ({
-                label: `${item?.venue} - ${item?.date}`,
-              }),
+              dateFormat: "YYYY-MM-DD",
+              timeFormat: "HH:mm"
+            }
+          },
+          {
+            type: "string",
+            name: "city",
+            label: "Ville",
+            required: true,
+          },
+          {
+            type: "string",
+            name: "address",
+            label: "Adresse",
+          },
+          {
+            type: "string",
+            name: "ticketUrl",
+            label: "Lien billetterie",
+          },
+          {
+            type: "string",
+            name: "description",
+            label: "Description",
+            ui: {
+              component: "textarea",
             },
-            fields: [
-              {
-                type: "string",
-                name: "venue",
-                label: "Salle",
-                required: true,
-              },
-              {
-                type: "datetime",
-                name: "date",
-                label: "Date et heure",
-                required: true,
-                ui: {
-                  dateFormat: "YYYY-MM-DD",
-                  timeFormat: "HH:mm"
-                }
-              },
-              {
-                type: "string",
-                name: "city",
-                label: "Ville",
-                required: true,
-              },
-              {
-                type: "string",
-                name: "address",
-                label: "Adresse",
-              },
-              {
-                type: "string",
-                name: "ticketUrl",
-                label: "Lien billetterie",
-              },
-              {
-                type: "string",
-                name: "description",
-                label: "Description",
-                ui: {
-                  component: "textarea",
-                },
-              },
-              {
-                type: "image",
-                name: "image",
-                label: "Image (affiche)",
-              },
-              {
-                type: "number",
-                name: "price",
-                label: "Prix (€)",
-              }
-            ]
-          }],
+          },
+          {
+            type: "image",
+            name: "image",
+            label: "Image (affiche)",
+          },
+          {
+            type: "number",
+            name: "price",
+            label: "Prix (€)",
+          }
+        ]
       },
       {
         name: "videos",
