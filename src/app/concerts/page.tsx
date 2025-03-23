@@ -5,15 +5,10 @@ import { ConcertPartsFragment } from "../../../tina/__generated__/types";
 import ConcertInfo from "@/components/ConcertInfo";
 
 const ConcertsPage = async () => {
-  const concerts = await client.getAllConcerts();
-
-  // Séparer les concerts futurs et passés
-  const now = new Date();
-  const futureConcerts = concerts.filter((concert: ConcertPartsFragment) => new Date(concert.date) > now);
-  const pastConcerts = concerts.filter((concert: ConcertPartsFragment) => new Date(concert.date) <= now);
-
-  // Trier les concerts futurs par date
-  futureConcerts.sort((a: ConcertPartsFragment, b: ConcertPartsFragment) => new Date(a.date).getTime() - new Date(b.date).getTime());
+  const [futureConcerts, pastConcerts] = await Promise.all([
+    client.getFutureConcerts(),
+    client.getPastConcerts()
+  ]);
 
   return (
     <main className={styles.container}>

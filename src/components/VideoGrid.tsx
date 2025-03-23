@@ -2,10 +2,10 @@
 
 import styles from './VideoGrid.module.css';
 import { useState, useEffect } from 'react';
-import { VideosVideos } from '../../tina/__generated__/types';
+import { VideoPartsFragment } from '../../tina/__generated__/types';
 
 interface VideoGridProps {
-    videos: VideosVideos[];
+    videos: VideoPartsFragment[];
 }
 
 const VideoGrid: React.FC<VideoGridProps> = ({ videos }) => {
