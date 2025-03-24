@@ -1,11 +1,12 @@
+'use client';
+
 import styles from './ConcertInfo.module.css';
 import { ConcertPartsFragment } from '../../tina/__generated__/types';
 import Image from 'next/image';
 
-
 interface ConcertInfoProps {
   concert: ConcertPartsFragment;
-  variant?: 'card' | 'compact';
+  onImageClick?: (imageUrl: string) => void;
 }
 
 const formatDate = (date: Date) => {
@@ -26,18 +27,17 @@ const formatTime = (date: Date) => {
   });
 };
 
-export default function ConcertInfo({ concert, variant = 'card' }: ConcertInfoProps) {
-
+const ConcertInfo = ({ concert, onImageClick }: ConcertInfoProps) => {
   const concertDate = new Date(concert.date);
 
   return (
-    <div className={`${styles.concertInfo} ${styles[variant]}`}>
+    <div className={styles.concertInfo}>
       <div className={styles.contentContainer}>
         <div className={styles.infoContainer}>
           <div className={styles.venueInfo}>
             <h3 className={styles.venueName}>{concert.venue}</h3>
             <p className={styles.city}>{concert.city}</p>
-            {concert.address && variant === 'card' && (
+            {concert.address && (
               <p className={styles.address}>{concert.address}</p>
             )}
           </div>
@@ -45,12 +45,12 @@ export default function ConcertInfo({ concert, variant = 'card' }: ConcertInfoPr
           <div className={styles.dateInfo}>
             <p className={styles.date}>{formatDate(concertDate)}</p>
             <p className={styles.time}>{formatTime(concertDate)}</p>
-            {concert.price && variant === 'card' && (
+            {concert.price && (
               <p className={styles.price}>{concert.price}€</p>
             )}
           </div>
 
-          {concert.description && variant === 'card' && (
+          {concert.description && (
             <p className={styles.description}>{concert.description}</p>
           )}
         </div>
@@ -62,8 +62,8 @@ export default function ConcertInfo({ concert, variant = 'card' }: ConcertInfoPr
               alt={concert.venue}
               width={300}
               height={300}
-              style={{ objectFit: 'cover' }}
-              className={styles.concertImage}
+              className={`${styles.concertImage} cursor-pointer transition-transform hover:scale-105`}
+              onClick={() => concert.image && onImageClick?.(concert.image)}
             />
           </div>
         )}
@@ -83,4 +83,6 @@ export default function ConcertInfo({ concert, variant = 'card' }: ConcertInfoPr
       )}
     </div>
   );
-} 
+}
+
+export default ConcertInfo;

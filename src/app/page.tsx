@@ -1,14 +1,32 @@
+'use client';
+
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import ConcertInfo from '@/components/ConcertInfo';
 import VideoGrid from '@/components/VideoGrid';
+import ImageModal from '@/components/ImageModal';
 import styles from './page.module.css';
 import { client } from '../lib/tina-client';
+import { useState, useEffect } from 'react';
+import { ConcertPartsFragment } from '../../tina/__generated__/types';
 
+const Home = () => {
+  const [nextConcert, setNextConcert] = useState<ConcertPartsFragment | null>(null);
+  const [latestVideo, setLatestVideo] = useState<any>(null);
+  const [selectedImage, setSelectedImage] = useState<{ url: string; alt: string } | null>(null);
 
-export default async function Home() {
-  const nextConcert = await client.getNextConcert();
-  const latestVideo = await client.getLatestVideo()
+  useEffect(() => {
+    const fetchData = async () => {
+      const [concert, video] = await Promise.all([
+        client.getNextConcert(),
+        client.getLatestVideo()
+      ]);
+      setNextConcert(concert);
+      setLatestVideo(video);
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <main className={styles.container}>
@@ -30,7 +48,10 @@ export default async function Home() {
           <div className={styles.card}>
             <h2 className={styles.cardTitle}>Prochain Concert</h2>
             {nextConcert ? (
-              <ConcertInfo concert={nextConcert} variant="compact" />
+              <ConcertInfo 
+                concert={nextConcert} 
+                onImageClick={(imageUrl: string) => setSelectedImage({ url: imageUrl, alt: nextConcert.venue })}
+              />
             ) : (
               <p className={styles.noContent}>Aucun concert programmé pour le moment</p>
             )}
@@ -46,6 +67,16 @@ export default async function Home() {
           {latestVideo && <VideoGrid videos={[latestVideo]} />}
         </section>
       </section>
+
+      {selectedImage && (
+        <ImageModal
+          imageUrl={selectedImage.url}
+          alt={selectedImage.alt}
+          onClose={() => setSelectedImage(null)}
+        />
+      )}
     </main>
   );
-} 
+}
+
+export default Home; 
