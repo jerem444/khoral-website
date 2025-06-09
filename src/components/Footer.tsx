@@ -4,12 +4,12 @@ import Link from 'next/link';
 import styles from './Footer.module.css';
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { 
-  faFacebookF, 
-  faInstagram, 
-  faSpotify, 
-  faApple, 
-  faBandcamp 
+import {
+    faFacebookF,
+    faInstagram,
+    faSpotify,
+    faApple,
+    faBandcamp
 } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
@@ -27,7 +27,6 @@ const Footer = () => {
             <div className={styles.container}>
                 <div className={styles.content}>
                     <div className={styles.section}>
-                        <h3 className={styles.title}>Contact</h3>
                         <div className={styles.socialLinks}>
                             {email && (
                                 <a
@@ -46,10 +45,9 @@ const Footer = () => {
                     </div>
 
                     <div className={styles.section}>
-                        <h3 className={styles.title}>Suivez-nous</h3>
                         <div className={styles.socialLinks}>
                             <a
-                                href="https://www.facebook.com/khoral"
+                                href="https://www.facebook.com/khoral80"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className={styles.socialLink}
@@ -58,7 +56,7 @@ const Footer = () => {
                                 <FontAwesomeIcon icon={faFacebookF} className={styles.socialIcon} />
                             </a>
                             <a
-                                href="https://www.instagram.com/khoral"
+                                href="https://www.instagram.com/khoral80"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className={styles.socialLink}
@@ -70,7 +68,6 @@ const Footer = () => {
                     </div>
 
                     <div className={styles.section}>
-                        <h3 className={styles.title}>Écouter</h3>
                         <div className={styles.socialLinks}>
                             <a
                                 href="https://open.spotify.com/artist/khoral"

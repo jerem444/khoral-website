@@ -14,13 +14,6 @@
   @apply space-y-4;
 }
 
-.title {
-  @apply text-xl font-bold mb-4;
-  background: linear-gradient(to right, #fff, #ccc);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
 .socialLinks {
   @apply flex flex-wrap gap-4;
 }
@@ -36,23 +29,6 @@
 
 .socialIcon {
   @apply text-xl;
-}
-
-/* Couleurs spécifiques pour les icônes de streaming */
-.socialLink[aria-label="Spotify"]:hover {
-  @apply text-[#1DB954] border-[#1DB954]/40;
-}
-
-.socialLink[aria-label="Apple Music"]:hover {
-  @apply text-[#FB2D3F] border-[#FB2D3F]/40;
-}
-
-.socialLink[aria-label="Bandcamp"]:hover {
-  @apply text-[#629aa9] border-[#629aa9]/40;
-}
-
-.socialLink[aria-label="Email"]:hover {
-  @apply text-[#EA4335] border-[#EA4335]/40;
 }
 
 .copyright {
