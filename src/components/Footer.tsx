@@ -16,10 +16,10 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 const Footer = () => {
     const [email, setEmail] = useState('');
     useEffect(() => {
-        // Décodage de l'email au chargement du composant
-        const encodedEmail = 'Y29udGFjdEBraG9yYWwuZnI='; // contact@khoral.fr en base64
-        const decodedEmail = atob(encodedEmail);
-        setEmail(decodedEmail);
+        const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL;
+        if (contactEmail) {
+            setEmail(contactEmail);
+        }
     }, []);
 
     return (
