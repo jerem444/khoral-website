@@ -16,10 +16,9 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 const Footer = () => {
     const [email, setEmail] = useState('');
     useEffect(() => {
-        const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL;
-        if (contactEmail) {
-            setEmail(contactEmail);
-        }
+        const encodedEmail = 'YXV0b21hdGEucHJvZC5hc3NvQGdtYWlsLmNvbQ==';
+        const decodedEmail = atob(encodedEmail);
+        setEmail(decodedEmail);
     }, []);
 
     return (
