@@ -1,3 +1,4 @@
+import Footer from '@/components/Footer';
 import './globals.css'
 import { Inter } from 'next/font/google'
 
@@ -12,6 +13,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => (
   <html lang="fr">
     <body className={inter.className}>
       {children}
+      <Footer />
     </body>
   </html>
 );

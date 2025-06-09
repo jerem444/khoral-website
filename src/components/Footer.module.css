@@ -1,0 +1,60 @@
+.footer {
+  @apply bg-black/40 backdrop-blur-sm border-t border-white/10 mt-16;
+}
+
+.container {
+  @apply max-w-7xl mx-auto px-4 py-8;
+}
+
+.content {
+  @apply grid grid-cols-1 md:grid-cols-3 gap-8 mb-8;
+}
+
+.section {
+  @apply space-y-4;
+}
+
+.title {
+  @apply text-xl font-bold mb-4;
+  background: linear-gradient(to right, #fff, #ccc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.socialLinks {
+  @apply flex flex-wrap gap-4;
+}
+
+.socialLink {
+  @apply text-white/80 hover:text-white transition-colors duration-300;
+  @apply flex items-center justify-center;
+  @apply w-10 h-10 rounded-full;
+  @apply border border-white/20;
+  @apply hover:border-white/40 hover:bg-white/5;
+  @apply transition-all duration-300;
+}
+
+.socialIcon {
+  @apply text-xl;
+}
+
+/* Couleurs spécifiques pour les icônes de streaming */
+.socialLink[aria-label="Spotify"]:hover {
+  @apply text-[#1DB954] border-[#1DB954]/40;
+}
+
+.socialLink[aria-label="Apple Music"]:hover {
+  @apply text-[#FB2D3F] border-[#FB2D3F]/40;
+}
+
+.socialLink[aria-label="Bandcamp"]:hover {
+  @apply text-[#629aa9] border-[#629aa9]/40;
+}
+
+.socialLink[aria-label="Email"]:hover {
+  @apply text-[#EA4335] border-[#EA4335]/40;
+}
+
+.copyright {
+  @apply text-center text-white/60 text-sm pt-8 border-t border-white/10;
+}

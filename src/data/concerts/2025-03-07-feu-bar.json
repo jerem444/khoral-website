@@ -4,7 +4,6 @@
   "city": "Nantes",
   "address": "87 rue Maréchal Joffre",
   "ticketUrl": "https://www.facebook.com/events/645611284818404",
-  "description": "",
-  "image": "/src/assets/images/feu_bar.jpg",
-  "price": 0
+  "description": "Prix libre",
+  "image": "/src/assets/images/feu_bar.jpg"
 }

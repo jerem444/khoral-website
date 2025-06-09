@@ -2,6 +2,8 @@
   "venue": "Le Floride",
   "date": "2025-03-22T19:00:00.000Z",
   "city": "Nantes",
+  "address": "4 rue St Domingue",
+  "ticketUrl": "https://www.le-floride-nantes.fr/d-tails-et-inscription/concert-coldwave-synthwave",
   "image": "/src/assets/images/fly.png",
   "price": 8
 }
