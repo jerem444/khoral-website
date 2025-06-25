@@ -84,3 +84,9 @@
   font-size: 1rem;
   text-align: center;
 }
+
+@media (max-width: 768px) {
+  .content {
+    padding: 0; /* Supprime le padding horizontal */
+  }
+}
