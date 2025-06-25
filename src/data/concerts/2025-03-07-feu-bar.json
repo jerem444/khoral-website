@@ -1,9 +1,9 @@
 {
-  "venue": "Feu Bar",
+  "venue": "feu bar",
   "date": "2025-03-07T20:00:00.000Z",
-  "city": "Nantes",
-  "address": "87 rue Maréchal Joffre",
+  "city": "nantes",
+  "address": "87 rue maréchal joffre",
   "ticketUrl": "https://www.facebook.com/events/645611284818404",
-  "description": "Prix libre",
-  "image": "/src/assets/images/feu_bar.jpg"
+  "description": "prix libre",
+  "image": "/src/assets/images/concerts/Flyer Feu.jpg"
 }

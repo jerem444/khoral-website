@@ -51,10 +51,10 @@ const PhotoCarousel: React.FC<PhotoCarouselProps> = ({ photos }) => {
           centeredSlides={true}
           slidesPerView={"auto"}
           coverflowEffect={{
-            rotate: 20,
-            stretch: 0,
-            depth: 100,
-            modifier: 1,
+            rotate: 15,
+            stretch: 20,
+            depth: 80,
+            modifier: 1.2,
             slideShadows: true,
           }}
           pagination={{
@@ -83,9 +83,9 @@ const PhotoCarousel: React.FC<PhotoCarouselProps> = ({ photos }) => {
           }}
           className={`${styles.mySwiper} ${styles.paginationContainer}`}
           breakpoints={{
-            640: { slidesPerView: 1.3 },
-            768: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
+            640: { slidesPerView: 1.5 },
+            768: { slidesPerView: 2.5 },
+            1024: { slidesPerView: 3.5 },
           }}
         >
           {photos.map((photo, index) => (
