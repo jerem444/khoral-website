@@ -7,14 +7,44 @@
   --foreground-rgb: 255, 255, 255;
   --background-start-rgb: 0, 0, 0;
   --background-end-rgb: 0, 0, 0;
+  --background: black;
+  --text: white;
 }
 
-/* Styles de base */
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+body::before {
+  content: '';
+  position: fixed;
+  top: 73px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  background-image: url('/src/assets/images/logo-bg-big.jpg');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+  z-index: -1;
+}
+
+
+/* Désactiver l'image de fond sur mobile */
+@media (max-width: 768px) {
+  body::before {
+    background-image: none;
+    animation: none;
+  }
+}
+
+@keyframes subtleMove {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+    opacity: 0.35;
+  }
+  50% {
+    transform: translateY(-10px) scale(1.02);
+    opacity: 0.65;
+  }
 }
 
 /* Classes utilitaires */
@@ -86,11 +116,8 @@ body {
 @layer base {
   body {
     @apply bg-black text-white font-sans;
-    background-color: var(--background);
-    color: var(--text);
-    background-image:
-      radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 20%),
-      radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 20%);
+    background-color: black;
+    color: white;
   }
 
   h1,

@@ -6,10 +6,10 @@ import styles from './Navbar.module.css';
 
 const navLinks = [
   { href: '/', label: 'accueil' },
+  { href: '/musique', label: 'musique' },
   { href: '/portfolio', label: 'portfolio' },
   { href: '/concerts', label: 'concerts' },
   { href: '/videos', label: 'vidéos' },
-  { href: '/musique', label: 'musique' },
 ];
 
 const NavLink = ({ href, children, onClick, isMobile = false }: { 

@@ -68,7 +68,7 @@ const Footer = () => {
 
                     <div className={styles.section}>
                         <div className={styles.socialLinks}>
-                            <a
+                            {/* <a
                                 href="https://open.spotify.com/artist/khoral"
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -85,7 +85,7 @@ const Footer = () => {
                                 aria-label="Apple Music"
                             >
                                 <FontAwesomeIcon icon={faApple} className={styles.socialIcon} />
-                            </a>
+                            </a> */}
                             <a
                                 href="https://khoral.bandcamp.com"
                                 target="_blank"

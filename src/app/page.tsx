@@ -37,10 +37,10 @@ const Home = () => {
         </h1>
         <div className={styles.buttonGroup}>
           <Link href="/musique" className={styles.button}>
-            Écouter
+            musique
           </Link>
           <Link href="/concerts" className={styles.button}>
-            Concerts
+            concerts
           </Link>
         </div>
 
