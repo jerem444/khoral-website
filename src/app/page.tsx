@@ -46,24 +46,24 @@ const Home = () => {
 
         <div className={styles.grid}>
           <div className={styles.card}>
-            <h2 className={styles.cardTitle}>Prochain Concert</h2>
+            <h2 className={styles.cardTitle}>prochain concert</h2>
             {nextConcert ? (
               <ConcertInfo 
                 concert={nextConcert} 
                 onImageClick={(imageUrl: string) => setSelectedImage({ url: imageUrl, alt: nextConcert.venue })}
               />
             ) : (
-              <p className={styles.noContent}>Aucun concert programmé pour le moment</p>
+              <p className={styles.noContent}>aucun concert programmé pour le moment</p>
             )}
           </div>
           <div className={styles.card}>
-            <h2 className={styles.cardTitle}>Dernier Album</h2>
-            <p className={styles.noContent}>All the Lost Weekends</p>
+            <h2 className={styles.cardTitle}>dernier Album</h2>
+            <p className={styles.noContent}>all the lost weekends</p>
           </div>
         </div>
 
         <section className={styles.videosSection}>
-          <h2 className={styles.sectionTitle}>Dernière Vidéo</h2>
+          <h2 className={styles.sectionTitle}>dernière vidéo</h2>
           {latestVideo && <VideoGrid videos={[latestVideo]} />}
         </section>
       </section>

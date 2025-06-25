@@ -14,3 +14,73 @@
   width: 100%; /* Assurez-vous que le conteneur prend toute la largeur */
   margin: auto; /* Pour centrer le conteneur */
 }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.card {
+  position: relative;
+  overflow: hidden; /* Important pour le zoom */
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  transform: scale(1); /* Ajouté pour définir l'état initial */
+  transition: transform 0.3s ease; /* Transition fluide */
+}
+
+.card:hover .image {
+  transform: scale(1.1); /* Zoom à 110% */
+}
+
+@media (min-width: 1024px) {
+  .card:hover .image {
+    transform: scale(1.1); /* Zoom uniquement sur desktop */
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover .overlay {
+  opacity: 1;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.description {
+  font-size: 1rem;
+  text-align: center;
+}

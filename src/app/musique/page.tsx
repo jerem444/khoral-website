@@ -8,7 +8,7 @@ export default function MusiquePage() {
       <section className="container mx-auto px-4 py-16">
         <div className="mb-16">
           <h2 className="text-2xl font-bold text-center mb-8 animate-fade-in">
-            Dernier Album : All the Lost Weekends
+            dernier album : all the lost weekends
           </h2>
           <BandcampPlayer />
           <div className="text-center mt-4">
@@ -25,9 +25,9 @@ export default function MusiquePage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="card animate-fade-in">
-            <h2 className="text-2xl font-bold mb-4">Albums</h2>
+            <h2 className="text-2xl font-bold mb-4">albums</h2>
             <ul className="space-y-2">
-              <li className="album-link">All the Lost Weekends (2024)</li>
+              <li className="album-link">all the lost weekends (2024)</li>
             </ul>
           </div>
         </div>
