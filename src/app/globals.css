@@ -27,14 +27,14 @@ body::before {
   z-index: -1;
 }
 
-
 /* Désactiver l'image de fond sur mobile */
 @media (max-width: 768px) {
   body::before {
-    background-image: none;
-    animation: none;
+    top: -146px;
+    background-image: url('/src/assets/images/logo-bg-small.jpg');
   }
 }
+
 
 @keyframes subtleMove {
   0%, 100% {
