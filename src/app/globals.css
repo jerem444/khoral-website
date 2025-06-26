@@ -30,6 +30,7 @@ body::before {
 /* Désactiver l'image de fond sur mobile */
 @media (max-width: 768px) {
   body::before {
+    height: calc(100% - 73px);
     background-image: url('/src/assets/images/logo-bg-small.jpg');
   }
 }
