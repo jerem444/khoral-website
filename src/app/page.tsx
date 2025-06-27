@@ -32,9 +32,6 @@ const Home = () => {
     <main className={styles.container}>
       <Navbar />
       <section className={styles.content}>
-        <h1 className={styles.title}>
-          khoral
-        </h1>
         <div className={styles.buttonGroup}>
           <Link href="/musique" className={styles.button}>
             musique
@@ -45,8 +42,8 @@ const Home = () => {
         </div>
 
         <div className={styles.grid}>
-          <div className={styles.card}>
-            <h2 className={styles.cardTitle}>prochain concert</h2>
+          <div className="card animate-fade-in">
+            <h2 className="text-2xl font-bold mb-4">prochain concert</h2>
             {nextConcert ? (
               <ConcertInfo 
                 concert={nextConcert} 
@@ -56,8 +53,8 @@ const Home = () => {
               <p className={styles.noContent}>aucun concert programmé pour le moment</p>
             )}
           </div>
-          <div className={styles.card}>
-            <h2 className={styles.cardTitle}>dernier Album</h2>
+          <div className="card animate-fade-in">
+            <h2 className="text-2xl font-bold mb-4">dernier Album</h2>
             <p className={styles.noContent}>all the lost weekends</p>
           </div>
         </div>

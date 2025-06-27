@@ -42,7 +42,7 @@ const ConcertsPage = () => {
       <main className={styles.container}>
         <Navbar />
         <div className={styles.content}>
-          <div className="text-center text-gray-400">Chargement...</div>
+          <div className="text-center text-gray-400">chargement...</div>
         </div>
       </main>
     );
@@ -55,7 +55,7 @@ const ConcertsPage = () => {
         <div className={styles.concertsList}>
           {futureConcerts.length > 0 && (
             <section className={styles.section}>
-              <h2 className={styles.sectionTitle}>Prochains Concerts</h2>
+              <h2 className={styles.sectionTitle}>prochains concerts</h2>
               <div className={styles.concertsGrid}>
                 {futureConcerts.map((concert) => (
                   <ConcertInfo
@@ -70,7 +70,7 @@ const ConcertsPage = () => {
 
           {pastConcerts.length > 0 && (
             <section className={styles.section}>
-              <h2 className={styles.sectionTitle}>Concerts Passés</h2>
+              <h2 className={styles.sectionTitle}>concerts passés</h2>
               <div className={styles.concertsGrid}>
                 {pastConcerts.map((concert) => (
                   <ConcertInfo

@@ -77,7 +77,7 @@ const ConcertInfo = ({ concert, onImageClick }: ConcertInfoProps) => {
             rel="noopener noreferrer"
             className={styles.button}
           >
-            Réserver
+            réserver
           </a>
         </div>
       )}

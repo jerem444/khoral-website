@@ -1,14 +1,11 @@
 'use client';
 
-import Link from 'next/link';
 import styles from './Footer.module.css';
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faFacebookF,
     faInstagram,
-    faSpotify,
-    faApple,
     faBandcamp
 } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
@@ -100,7 +97,7 @@ const Footer = () => {
                 </div>
 
                 <div className={styles.copyright}>
-                    © {new Date().getFullYear()} Khoral. Tous droits réservés.
+                    © {new Date().getFullYear()} khoral. tous droits réservés.
                 </div>
             </div>
         </footer>

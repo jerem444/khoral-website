@@ -18,7 +18,7 @@ export default function MusiquePage() {
               rel="noopener noreferrer"
               className="text-white hover:text-gray-300 transition-colors duration-300"
             >
-              Écouter sur Bandcamp
+              écouter sur Bandcamp
             </a>
           </div>
         </div>
