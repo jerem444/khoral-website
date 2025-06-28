@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 import styles from './Navbar.module.css';
 
@@ -82,7 +83,14 @@ const Navbar = () => {
       <div className={styles.navbarBackground} />
       <div className={styles.container}>
         <Link href="/" className={styles.brand}>
-          khoral
+          <Image 
+            src="/icon0.svg" 
+            alt="Logo Khoral" 
+            width={40} 
+            height={40} 
+            className={styles.logo} 
+          />
+          <span className={styles.brandText}>khoral</span>
         </Link>
         
         <HamburgerButton isOpen={isMenuOpen} onClick={toggleMenu} />
@@ -93,4 +101,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar; 
+export default Navbar;

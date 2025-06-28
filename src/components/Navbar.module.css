@@ -15,6 +15,20 @@
 .brand {
   @apply text-2xl font-normal text-white hover:text-gray-300;
   transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  height: 40px;
+  width: auto;
+}
+
+@media (max-width: 768px) {
+  .logo {
+    height: 32px;
+  }
 }
 
 /* Navigation Links Base */
@@ -103,4 +117,4 @@
     opacity: 1;
     transform: translateY(0);
   }
-} 
+}
