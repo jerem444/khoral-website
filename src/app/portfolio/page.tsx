@@ -1,10 +1,25 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import styles from './page.module.css';
 import { client } from '../../lib/tina-client';
+import Image from 'next/image';
+import { PhotosPhotos } from '../../../tina/__generated__/types';
+import ImageModal from '@/components/ImageModal';
 
-const Portfolio = async () => {
-  const photos = await client.getAllPhotos();
+const Portfolio = () => {
+  const [photos, setPhotos] = useState<PhotosPhotos[]>([]);
+  const [selectedImage, setSelectedImage] = useState<{ url: string; alt: string } | null>(null);
+
+  // Charger les photos
+  React.useEffect(() => {
+    const fetchData = async () => {
+      const data = await client.getAllPhotos();
+      setPhotos(data);
+    };
+    fetchData();
+  }, []);
 
   return (
     <main className={styles.container}>
@@ -13,15 +28,32 @@ const Portfolio = async () => {
         <div className={styles.grid}>
           {photos.map((photo, index) => (
             <div key={index} className={styles.card}>
-              <img src={photo.image} alt={photo.title} className={styles.image} />
-              <div className={styles.overlay}>
-                <h3 className={styles.title}>{photo.title}</h3>
-                <p className={styles.description}>{photo.description}</p>
-              </div>
+              <Image
+                src={photo.image}
+                alt={photo.title || 'Photo'}
+                width={300}
+                height={200}
+                className={styles.image}
+                quality={75}
+                placeholder="blur"
+                blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzEyMTIxMiIvPjwvc3ZnPg=="
+                loading="lazy"
+                onClick={() => photo.image && setSelectedImage({
+                  url: photo.image,
+                  alt: photo.title || 'Photo'
+                })}
+              />
             </div>
           ))}
         </div>
       </div>
+      {selectedImage && (
+        <ImageModal
+          imageUrl={selectedImage.url}
+          alt={selectedImage.alt}
+          onClose={() => setSelectedImage(null)}
+        />
+      )}
     </main>
   );
 };
