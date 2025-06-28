@@ -41,7 +41,7 @@ const ImageModal = ({ imageUrl, alt, onClose }: ImageModalProps) => (
         src={imageUrl}
         alt={alt}
         width={1200}
-        height={1200}
+        height={800}
         quality={75}
         placeholder="blur"
         blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzEyMTIxMiIvPjwvc3ZnPg=="

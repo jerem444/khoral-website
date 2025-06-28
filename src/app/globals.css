@@ -19,7 +19,7 @@ body::before {
   width: 100%;
   height: 100%;
   background-color: black;
-  background-image: url('/src/assets/images/logo-bg-big.jpg');
+  background-image: url('/src/assets/images/logo-bg-big.webp');
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -31,7 +31,7 @@ body::before {
 @media (max-width: 768px) {
   body::before {
     top: -90px;
-    background-image: url('/src/assets/images/logo-bg-small.jpg');
+    background-image: url('/src/assets/images/logo-bg-small.webp');
   }
 }
 
@@ -110,8 +110,8 @@ body::before {
 
 @font-face {
   font-family: 'Caviar Dreams';
-  src: url('../assets/fonts/CaviarDreams.woff2') format('woff2'),
-       url('../assets/fonts/CaviarDreams.woff') format('woff');
+  src: url('../assets/fonts/CaviarDreams_bold.woff2') format('woff2'),
+       url('../assets/fonts/CaviarDreams_bold.woff') format('woff');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
