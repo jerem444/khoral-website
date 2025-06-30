@@ -58,7 +58,7 @@ const ImageModal = ({ imageUrl, alt, onClose }: ImageModalProps) => {
 
         {isLoading && (
           <div className={styles.spinner}>
-            Chargement...
+            chargement...
           </div>
         )}
       </div>

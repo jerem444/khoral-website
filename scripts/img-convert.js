@@ -8,7 +8,7 @@ const maxWidth = 1200; // Largeur maximale des images
 
 // Lire les fichiers du répertoire d'entrée
 fs.readdirSync(inputDir).forEach(file => {
-  if (file.match(/\.(jpg|JPG|jpeg|png)$/i)) {
+  if (file.match(/\.(webp)$/i)) {
     console.log(`Traitement de ${file}...`);
     
     sharp(path.join(inputDir, file))
@@ -17,9 +17,9 @@ fs.readdirSync(inputDir).forEach(file => {
         withoutEnlargement: true, // Ne pas agrandir les images plus petites
         fit: 'inside' // Conserver les proportions
       })
-      .toFile(path.join(outputDir, `${path.parse(file).name}.webp`))
+      .toFile(path.join(outputDir, `${path.parse(file).name}.jpg`))
       .then(() => {
-        console.log(`✅ Converti: ${file} -> ${path.parse(file).name}.webp`);
+        console.log(`✅ Converti: ${file} -> ${path.parse(file).name}.jpg`);
       })
       .catch(err => {
         console.error(`❌ Erreur avec ${file}:`, err);
