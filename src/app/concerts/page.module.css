@@ -29,19 +29,6 @@
   @apply grid gap-6 md:gap-8;
 }
 
-.concertCard {
-  @apply bg-black/40 backdrop-blur-sm p-4 md:p-6 rounded-lg;
-}
-
-.concertCard:hover {
-  @apply transform -translate-y-1;
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-}
-
-.cardContent {
-  @apply flex flex-col md:flex-row md:justify-between md:items-start gap-4 md:gap-0;
-}
-
 .venueInfo {
   @apply flex-1;
 }

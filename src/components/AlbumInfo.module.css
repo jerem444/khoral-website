@@ -1,7 +1,3 @@
-.albumCard {
-  @apply bg-black/40 backdrop-blur-sm p-6 md:p-8 rounded-lg border border-white/10;
-}
-
 .albumContent {
   @apply flex flex-col md:flex-row gap-6 items-center md:items-start;
 }

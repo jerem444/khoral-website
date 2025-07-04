@@ -1,6 +1,7 @@
 'use client';
 
 import styles from './ConcertInfo.module.css';
+import cardStyles from './Card.module.css';
 import { ConcertPartsFragment } from '../../tina/__generated__/types';
 import Image from 'next/image';
 
@@ -31,7 +32,7 @@ const ConcertInfo = ({ concert, onImageClick }: ConcertInfoProps) => {
   const concertDate = new Date(concert.date);
 
   return (
-    <div className={styles.concertInfo}>
+    <div className={cardStyles.card}>
       <div className={styles.contentContainer}>
         <div className={styles.infoContainer}>
           <div className={styles.venueInfo}>

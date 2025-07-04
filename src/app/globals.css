@@ -242,11 +242,6 @@ body::before {
     @apply -rotate-45 -translate-y-[0.1rem] translate-x-[0.15rem];
   }
 
-  /* Cards */
-  .card {
-    @apply bg-[#111111] p-6 rounded-lg shadow-lg hover:shadow-xl transition-standard border border-[#333333] hover:border-white/30 transform hover:-translate-y-1;
-  }
-
   /* Titres */
   .section-title {
     @apply text-4xl md:text-5xl font-bold mb-8 text-center bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent font-sans;

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { AlbumPartsFragment } from '../../tina/__generated__/types';
+import cardStyles from './Card.module.css';
 import styles from './AlbumInfo.module.css';
 
 interface AlbumProps {
@@ -11,7 +12,7 @@ interface AlbumProps {
 
 const Album: React.FC<AlbumProps> = ({ album, minimal }) => {
     return (
-        <div className={styles.albumCard}>
+        <div className={cardStyles.card}>
             <div className={styles.albumContent}>
                 <div className={styles.albumCoverContainer}>
                     <img
