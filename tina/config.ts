@@ -17,58 +17,6 @@ export default defineConfig({
   schema: {
     collections: [
       {
-        name: "photos",
-        label: "Photos",
-        path: "src/data/photos",
-        format: "json",
-        ui: {
-          filename: {
-            readonly: true,
-            slugify: values => "photos.json",
-          },
-        },
-        fields: [
-          {
-            type: "object",
-            name: "photos",
-            label: "Photos",
-            list: true,
-            ui: {
-              itemProps: (item) => ({
-                label: `${item?.title} - ${item?.date}`,
-              }),
-            },
-            fields: [
-              {
-                type: "string",
-                name: "title",
-                label: "Titre",
-                required: true,
-              },
-              {
-                type: "datetime",
-                name: "date",
-                label: "Date",
-                required: true,
-              },
-              {
-                type: "image",
-                name: "image",
-                label: "Image",
-                required: true,
-              },
-              {
-                type: "string",
-                name: "description",
-                label: "Description",
-                ui: {
-                  component: "textarea",
-                },
-              },
-            ]
-          }],
-      },
-      {
         name: "concert",
         label: "Concerts",
         path: "src/data/concerts",

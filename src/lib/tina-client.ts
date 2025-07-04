@@ -1,6 +1,5 @@
 import { client as tinaClient } from "../../tina/__generated__/client";
 import {
-  PhotosPhotos,
   ConcertPartsFragment,
   VideoPartsFragment,
 } from "../../tina/__generated__/types";
@@ -12,13 +11,6 @@ const mapEdgesToNodes = <T>(edges: any[] | null | undefined): T[] =>
 const LAST_MAX = 100;
 export const client = {
   ...tinaClient,
-
-  // Photos
-  async getAllPhotos(): Promise<PhotosPhotos[]> {
-    const response = await tinaClient.queries.photosConnection();
-    const nodes = mapEdgesToNodes<{ photos: PhotosPhotos[] }>(response.data.photosConnection.edges);
-    return nodes.map(node => node.photos).flat().filter(Boolean) as PhotosPhotos[];
-  },
 
   // Concerts
   async getNextConcert(): Promise<ConcertPartsFragment> {

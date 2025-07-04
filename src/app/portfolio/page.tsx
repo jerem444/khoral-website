@@ -1,49 +1,40 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import styles from './page.module.css';
-import { client } from '../../lib/tina-client';
-import Image from 'next/image';
-import { PhotosPhotos } from '../../../tina/__generated__/types';
 import ImageModal from '@/components/ImageModal';
+import { ImageData } from '../api/portfolio-images/route';
 
 const Portfolio = () => {
-  const [photos, setPhotos] = useState<PhotosPhotos[]>([]);
+  const [images, setImages] = useState<ImageData[]>([]);
   const [selectedImage, setSelectedImage] = useState<{ url: string; alt: string } | null>(null);
 
-  // Charger les photos
-  React.useEffect(() => {
-    const fetchData = async () => {
-      const data = await client.getAllPhotos();
-      setPhotos(data);
+  useEffect(() => {
+    const fetchImages = async () => {
+      const response = await fetch('/api/portfolio-images');
+      const data = await response.json();
+      setImages(data);
     };
-    fetchData();
+
+    fetchImages();
   }, []);
 
   return (
     <main className={styles.container}>
       <Navbar />
-      <div className="h-[53px] md:hidden"/>
+      <div className="h-[53px] md:hidden" />
       <div className={styles.content}>
         <div className={styles.grid}>
-          {photos.map((photo, index) => (
-            <div key={index} className={styles.card}>
-              <Image
-                src={photo.image}
-                alt={photo.title}
-                width={300}
-                height={200}
+          {images.map((image) => (
+            <div key={image.name} className={styles.card}>
+              <img
+                src={image.url}
+                alt={image.name}
                 className={`${styles.image} cursor-pointer transition-transform hover:scale-105`}
-                quality={75}
-                placeholder="blur"
-                blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzEyMTIxMiIvPjwvc3ZnPg=="
-                loading="lazy"
-                onClick={() => photo.image && setSelectedImage({
-                  url: photo.image,
-                  alt: photo.title || 'Photo'
-                })}
+                onClick={() => setSelectedImage({ url: image.url, alt: image.name })}
               />
+              <p className={styles.imageName}>{image.name}</p>
             </div>
           ))}
         </div>

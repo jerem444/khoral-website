@@ -86,6 +86,13 @@
   text-align: center;
 }
 
+.imageName {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #666;
+}
+
 @media (max-width: 768px) {
   .content {
     padding: 0; /* Supprime le padding horizontal */
