@@ -19,7 +19,7 @@ body::before {
   width: 100%;
   height: 100%;
   background-color: black;
-  background-image: url('/src/assets/images/logo-bg-big.jpg');
+  background-image: url('/src/assets/images/background/big.jpg');
   background-size: contain;
   background-position: center top;
   background-repeat: no-repeat;
@@ -30,7 +30,7 @@ body::before {
 /* Désactiver l'image de fond sur mobile */
 @media (max-width: 768px) {
   body::before {
-    background-image: url('/src/assets/images/logo-bg-small.jpg');
+    background-image: url('/src/assets/images/background/small.jpg');
   }
 }
 

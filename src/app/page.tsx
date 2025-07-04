@@ -45,8 +45,8 @@ const Home = () => {
           <div className="card animate-fade-in">
             <h2 className="text-2xl font-bold mb-4">prochain concert</h2>
             {nextConcert ? (
-              <ConcertInfo 
-                concert={nextConcert} 
+              <ConcertInfo
+                concert={nextConcert}
                 onImageClick={(imageUrl: string) => setSelectedImage({ url: imageUrl, alt: nextConcert.venue })}
               />
             ) : (
@@ -58,11 +58,10 @@ const Home = () => {
             <p className={styles.noContent}>all the lost weekends</p>
           </div>
         </div>
-
-        <section className={styles.videosSection}>
-          <h2 className={styles.sectionTitle}>dernière vidéo</h2>
+        <div className="card animate-fade-in">
+          <h2 className="text-2xl font-bold mb-4">dernière vidéo</h2>
           {latestVideo && <VideoGrid videos={[latestVideo]} />}
-        </section>
+        </div>
       </section>
 
       {selectedImage && (

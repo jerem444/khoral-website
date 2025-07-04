@@ -21,24 +21,11 @@
   }
 }
 
-@media (max-width: 480px) {
-  .content {
-    padding-top: 80px;
-  }
-}
-
 .buttonGroup {
   display: flex;
   justify-content: center;
   gap: 1rem;
   margin-bottom: 1.5rem;
-}
-
-@media (min-width: 768px) {
-  .buttonGroup {
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
 }
 
 .button {
@@ -49,7 +36,6 @@
   font-weight: 500;
   transition: all 0.3s ease;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  animation: fadeIn 1s ease-in;
 }
 
 .button:hover {
@@ -67,119 +53,11 @@
   .grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 3rem;
-    margin-bottom: 2rem;
   }
-}
-
-.concertInfo {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.venueName {
-  font-size: 1.25rem;
-  font-weight: bold;
-  color: white;
-}
-
-.city {
-  font-size: 1.125rem;
-  color: #ccc;
-}
-
-.date {
-  color: #64B5F6;
-  font-size: 1rem;
-}
-
-.reserveButton {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.75rem 2rem;
-  background-color: #64B5F6;
-  color: white;
-  border-radius: 9999px;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-
-.reserveButton:hover {
-  background-color: #42A5F5;
-  transform: translateY(-2px);
 }
 
 .noContent {
   color: #666;
-  font-size: 1rem;
-}
-
-.videosSection {
-  margin-bottom: 2rem;
-}
-
-@media (min-width: 768px) {
-  .videosSection {
-    margin-bottom: 2rem;
-  }
-}
-
-.sectionTitle {
-  font-size: 2rem;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 2rem;
-  color: white;
-}
-
-.videosGrid {
-  display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(1, 1fr);
-}
-
-@media (min-width: 640px) {
-  .videosGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 768px) {
-  .videosGrid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-  }
-}
-
-.videoCard {
-  background: rgba(0, 0, 0, 0.4);
-  border-radius: 0.75rem;
-  padding: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: transform 0.3s ease;
-  animation: fadeIn 1s ease-in;
-}
-
-.videoCard:hover {
-  transform: translateY(-5px);
-}
-
-.videoThumbnail {
-  aspect-ratio: 16/9;
-  background-color: #1a1a1a;
-  border-radius: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-.videoTitle {
-  font-size: 1.25rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  color: white;
-}
-
-.videoDescription {
-  color: #ccc;
   font-size: 1rem;
 }
 
@@ -192,4 +70,8 @@
     opacity: 1;
     transform: translateY(0);
   }
-} 
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}

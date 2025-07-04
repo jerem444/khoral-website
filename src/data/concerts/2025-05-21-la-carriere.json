@@ -4,5 +4,6 @@
   "city": "saint-herblain",
   "address": "2 bis, rue du souvenir français",
   "ticketUrl": "https://www.eventbrite.com/e/la-carriere-unplugged-tickets-1306718483159",
-  "description": "session unplugged"
+  "image": "/src/assets/images/flyers/carriere.jpg",
+  "description": "session unplugged - hama saari + khoral + noise confusion + thrillington"
 }
