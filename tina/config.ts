@@ -127,7 +127,39 @@ export default defineConfig({
             },
           },
         ],
-      }
+      },
+      {
+        name: "album",
+        label: "Albums",
+        path: "src/data/albums",
+        format: "json",
+        fields: [
+          {
+            name: "name",
+            label: "Nom de l’album",
+            type: "string",
+            required: true,
+          },
+          {
+            name: "releaseDate",
+            label: "Date de sortie",
+            type: "datetime",
+            required: true,
+          },
+          {
+            name: "coverImage",
+            label: "Image de couverture",
+            type: "image",
+            required: true,
+          },
+          {
+            name: "bandCampId",
+            label: "id Bandcamp",
+            type: "string",
+            required: true,
+          }
+        ],
+      },
     ],
   },
-}); 
+});

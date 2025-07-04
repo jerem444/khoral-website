@@ -2,6 +2,7 @@ import { client as tinaClient } from "../../tina/__generated__/client";
 import {
   ConcertPartsFragment,
   VideoPartsFragment,
+  AlbumPartsFragment
 } from "../../tina/__generated__/types";
 
 // Fonction utilitaire pour transformer les edges en tableau typé
@@ -66,5 +67,21 @@ export const client = {
       last: LAST_MAX, // Récupérer les 100 derniers concerts
     });
     return mapEdgesToNodes<ConcertPartsFragment>(response.data.concertConnection.edges);
+  },
+
+  async getAllAlbums(): Promise<AlbumPartsFragment[]> {
+    const response = await tinaClient.queries.albumConnection({
+      sort: "releaseDate",
+      last: LAST_MAX, // Récupérer les 100 derniers albums
+    });
+    return mapEdgesToNodes<AlbumPartsFragment>(response.data.albumConnection.edges);
+  },
+
+  async getLatestAlbum(): Promise<AlbumPartsFragment> {
+    const response = await tinaClient.queries.albumConnection({
+      sort: "releaseDate",
+      last: 1 // Récupérer le dernier album
+    });
+    return mapEdgesToNodes<AlbumPartsFragment>(response.data.albumConnection.edges)[0];
   }
 };

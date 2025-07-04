@@ -5,24 +5,28 @@ import Navbar from '@/components/Navbar';
 import ConcertInfo from '@/components/ConcertInfo';
 import VideoGrid from '@/components/VideoGrid';
 import ImageModal from '@/components/ImageModal';
+import AlbumInfo from '@/components/AlbumInfo';
 import styles from './page.module.css';
 import { client } from '../lib/tina-client';
 import { useState, useEffect } from 'react';
-import { ConcertPartsFragment } from '../../tina/__generated__/types';
+import { ConcertPartsFragment, AlbumPartsFragment, VideoPartsFragment } from '../../tina/__generated__/types';
 
 const Home = () => {
   const [nextConcert, setNextConcert] = useState<ConcertPartsFragment | null>(null);
-  const [latestVideo, setLatestVideo] = useState<any>(null);
+  const [latestVideo, setLatestVideo] = useState<VideoPartsFragment| null>(null);
+  const [latestAlbum, setLatestAlbum] = useState<AlbumPartsFragment| null>(null);
   const [selectedImage, setSelectedImage] = useState<{ url: string; alt: string } | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      const [concert, video] = await Promise.all([
+      const [concert, video, album] = await Promise.all([
         client.getNextConcert(),
-        client.getLatestVideo()
+        client.getLatestVideo(),
+        client.getLatestAlbum()
       ]);
       setNextConcert(concert);
       setLatestVideo(video);
+      setLatestAlbum(album);
     };
 
     fetchData();
@@ -55,7 +59,7 @@ const Home = () => {
           </div>
           <div className="card animate-fade-in">
             <h2 className="text-2xl font-bold mb-4">dernier Album</h2>
-            <p className={styles.noContent}>all the lost weekends</p>
+            {latestAlbum && <AlbumInfo album={latestAlbum} minimal />}
           </div>
         </div>
         <div className="card animate-fade-in">
@@ -75,4 +79,4 @@ const Home = () => {
   );
 }
 
-export default Home; 
+export default Home;

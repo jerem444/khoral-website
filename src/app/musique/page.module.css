@@ -1,1 +1,30 @@
-/* use client */
+.container {
+  @apply min-h-screen;
+}
+
+.content {
+  @apply pt-16 md:pt-20 p-4 md:p-8;
+}
+
+.section {
+  @apply bg-black/40 backdrop-blur-sm p-6 md:p-8 rounded-lg border border-white/10 mb-8;
+}
+
+.sectionTitle {
+  @apply text-2xl md:text-3xl font-bold mb-6 text-center;
+  background: linear-gradient(to right, #fff, #ccc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.albumsList {
+  @apply max-w-4xl mx-auto;
+}
+
+.albumsGrid {
+  @apply grid gap-6 md:gap-8;
+}
+
+.emptyMessage {
+  @apply text-center text-sm md:text-base text-gray-400;
+}

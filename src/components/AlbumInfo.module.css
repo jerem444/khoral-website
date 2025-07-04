@@ -1,0 +1,47 @@
+.albumCard {
+  @apply bg-black/40 backdrop-blur-sm p-6 md:p-8 rounded-lg border border-white/10;
+}
+
+.albumContent {
+  @apply flex flex-col md:flex-row gap-6 items-center md:items-start;
+}
+
+.albumCoverContainer {
+  @apply md:w-[373px] flex-shrink-0;
+}
+
+.albumCover {
+  @apply w-full h-auto object-cover rounded;
+}
+
+.albumPlayerContainer {
+  @apply flex-1;
+}
+
+.albumPlayer {
+  @apply w-full h-[373px] rounded;
+}
+
+.albumFooter {
+  @apply flex items-center justify-between mt-4;
+}
+
+.albumReleaseDate {
+  @apply text-sm md:text-base text-gray-400;
+}
+
+.buyButtonContainer {
+  @apply flex-shrink-0;
+}
+
+.buyButton {
+  @apply inline-flex items-center justify-center px-6 py-3 bg-white/10 text-white rounded-full font-medium transition-all duration-300 border border-white/20;
+}
+
+.buyButton:hover {
+  @apply bg-white/20 translate-y-[-2px];
+}
+
+.albumName {
+  @apply mt-2 text-center text-lg font-semibold text-white;
+}

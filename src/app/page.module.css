@@ -57,8 +57,7 @@
 }
 
 .noContent {
-  color: #666;
-  font-size: 1rem;
+  @apply text-sm md:text-base text-gray-400;
 }
 
 @keyframes fadeIn {
