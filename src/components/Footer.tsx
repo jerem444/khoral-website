@@ -6,7 +6,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faFacebookF,
     faInstagram,
-    faBandcamp
+    faBandcamp,
+    faSpotify,
+    faApple,
+    faAmazon
 } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
@@ -65,8 +68,8 @@ const Footer = () => {
 
                     <div className={styles.section}>
                         <div className={styles.socialLinks}>
-                            {/* <a
-                                href="https://open.spotify.com/artist/khoral"
+                            <a
+                                href="https://open.spotify.com/intl-fr/artist/6jT0Cgl5SfXVMvcYtdgXwl"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className={styles.socialLink}
@@ -75,14 +78,14 @@ const Footer = () => {
                                 <FontAwesomeIcon icon={faSpotify} className={styles.socialIcon} />
                             </a>
                             <a
-                                href="https://music.apple.com/artist/khoral"
+                                href="https://music.apple.com/fr/artist/khoral/129022428"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className={styles.socialLink}
                                 aria-label="Apple Music"
                             >
                                 <FontAwesomeIcon icon={faApple} className={styles.socialIcon} />
-                            </a> */}
+                            </a>
                             <a
                                 href="https://khoral.bandcamp.com"
                                 target="_blank"
@@ -91,6 +94,15 @@ const Footer = () => {
                                 aria-label="Bandcamp"
                             >
                                 <FontAwesomeIcon icon={faBandcamp} className={styles.socialIcon} />
+                            </a>                            
+                            <a
+                                href="https://music.amazon.fr/artists/B0025NSUUC/khoral"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={styles.socialLink}
+                                aria-label="Bandcamp"
+                            >
+                                <FontAwesomeIcon icon={faAmazon} className={styles.socialIcon} />
                             </a>
                         </div>
                     </div>

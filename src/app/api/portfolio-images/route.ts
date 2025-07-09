@@ -13,7 +13,7 @@ export async function GET() {
 
     const imageData = files.map((file) => ({
         url: `/src/assets/images/portfolio/${file}`,
-        name: file.split('.')[0], // Récupère le nom du fichier sans extension
+        name: `${file.split('_')[0]} - ${file.split('_')[1]}`, // Récupère le nom du fichier sans extension
     }));
 
     return NextResponse.json(imageData);
