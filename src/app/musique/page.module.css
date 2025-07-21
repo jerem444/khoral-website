@@ -3,11 +3,11 @@
 }
 
 .content {
-  @apply pt-16 md:pt-20 p-4 md:p-8;
+  @apply pt-4 md:pt-6 p-4 md:p-8; 
 }
 
 .section {
-  @apply bg-black/40 backdrop-blur-sm p-6 md:p-8 rounded-lg border border-white/10 mb-8;
+  @apply bg-black/40 backdrop-blur-sm p-3 md:p-4 rounded-lg border border-white/10 mb-8;
 }
 
 .sectionTitle {

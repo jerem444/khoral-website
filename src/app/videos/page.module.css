@@ -3,5 +3,5 @@
 }
 
 .content {
-  @apply pt-16 md:pt-20 p-4 md:p-8;
+  @apply pt-4 md:pt-6 p-4 md:p-8; 
 }

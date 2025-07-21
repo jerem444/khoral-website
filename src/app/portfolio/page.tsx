@@ -23,7 +23,6 @@ const Portfolio = () => {
   return (
     <main className={styles.container}>
       <Navbar />
-      <div className="h-[53px] md:hidden" />
       <div className={styles.content}>
         <div className={styles.grid}>
           {images.map((image) => (

@@ -3,7 +3,7 @@
 }
 
 .content {
-  @apply pt-16 md:pt-20 p-4 md:p-8 max-w-4xl mx-auto;
+  @apply pt-4 md:pt-6 p-4 md:p-8 max-w-6xl mx-auto; 
 }
 
 .sectionTitle {
@@ -34,11 +34,7 @@
 }
 
 .bioText p {
-  @apply mb-4; /* Ajoute une marge inférieure pour espacer les paragraphes */
-}
-
-.bioList {
-  @apply list-disc pl-6 text-white/90 space-y-2;
+  @apply mb-4;
 }
 
 .contactButtonContainer {
