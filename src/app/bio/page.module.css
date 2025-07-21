@@ -1,0 +1,60 @@
+.container {
+  @apply min-h-screen;
+}
+
+.content {
+  @apply pt-16 md:pt-20 p-4 md:p-8 max-w-4xl mx-auto;
+}
+
+.sectionTitle {
+  @apply text-2xl md:text-3xl font-bold mb-6 text-center;
+  background: linear-gradient(to right, #fff, #ccc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bioContent {
+  @apply bg-black/40 backdrop-blur-sm p-6 md:p-8 rounded-lg border border-white/10 mb-8 space-y-8;
+}
+
+.imageContainer {
+  @apply w-full overflow-hidden rounded-lg;
+}
+
+.promoImage {
+  @apply w-full h-auto object-cover rounded-lg transition-all duration-500 hover:scale-[1.02];
+}
+
+.smallPromoImage {
+  @apply max-w-xs mx-auto; /* max-width: 20rem (320px) et centrage */
+}
+
+.bioText {
+  @apply text-lg md:text-xl text-white/90 py-4 px-2 md:px-8;
+}
+
+.bioText p {
+  @apply mb-4; /* Ajoute une marge inférieure pour espacer les paragraphes */
+}
+
+.bioList {
+  @apply list-disc pl-6 text-white/90 space-y-2;
+}
+
+.contactButtonContainer {
+  @apply flex justify-center mt-6;
+}
+
+.contactButton {
+  @apply inline-flex items-center justify-center px-6 py-3 bg-white/10 text-white rounded-full font-medium transition-all duration-300 border border-white/20;
+}
+
+.contactButton:hover {
+  @apply bg-white/20 translate-y-[-2px];
+}
+
+@media (max-width: 640px) {
+  .bioText {
+    @apply text-base px-0;
+  }
+}

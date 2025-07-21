@@ -1,7 +1,6 @@
 'use client';
 
 import styles from './Footer.module.css';
-import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faFacebookF,
@@ -12,34 +11,27 @@ import {
     faAmazon
 } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { useEmail } from '@/lib/useEmail';
 
 const Footer = () => {
-    const [email, setEmail] = useState('');
-    useEffect(() => {
-        const encodedEmail = 'YXV0b21hdGEucHJvZC5hc3NvQGdtYWlsLmNvbQ==';
-        const decodedEmail = atob(encodedEmail);
-        setEmail(decodedEmail);
-    }, []);
-
+    const email = useEmail();
     return (
         <footer className={styles.footer}>
             <div className={styles.container}>
                 <div className={styles.content}>
                     <div className={styles.section}>
                         <div className={styles.socialLinks}>
-                            {email && (
-                                <a
-                                    href={`mailto:${email}`}
-                                    className={styles.socialLink}
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        window.location.href = `mailto:${email}`;
-                                    }}
-                                    aria-label="Email"
-                                >
-                                    <FontAwesomeIcon icon={faEnvelope} className={styles.socialIcon} />
-                                </a>
-                            )}
+                            <a
+                                href={`mailto:${email}`}
+                                className={styles.socialLink}
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    window.location.href = `mailto:${email}`;
+                                }}
+                                aria-label="Email"
+                            >
+                                <FontAwesomeIcon icon={faEnvelope} className={styles.socialIcon} />
+                            </a>
                         </div>
                     </div>
 
@@ -94,7 +86,7 @@ const Footer = () => {
                                 aria-label="Bandcamp"
                             >
                                 <FontAwesomeIcon icon={faBandcamp} className={styles.socialIcon} />
-                            </a>                            
+                            </a>
                             <a
                                 href="https://music.amazon.fr/artists/B0025NSUUC/khoral"
                                 target="_blank"

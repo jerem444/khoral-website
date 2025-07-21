@@ -27,5 +27,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       priority: 0.8,
     },
+    {
+      url: 'https://khoral.fr/bio',
+      lastModified: new Date(),
+      priority: 0.8,
+    },
   ]
 }

@@ -7,6 +7,7 @@ import styles from './Navbar.module.css';
 
 const navLinks = [
   { href: '/', label: 'accueil' },
+  { href: '/bio', label: 'bio' },
   { href: '/musique', label: 'musique' },
   { href: '/portfolio', label: 'portfolio' },
   { href: '/concerts', label: 'concerts' },
