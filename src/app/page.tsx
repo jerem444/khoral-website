@@ -6,7 +6,7 @@ import ConcertInfo from '@/components/ConcertInfo';
 import VideoGrid from '@/components/VideoGrid';
 import ImageModal from '@/components/ImageModal';
 import AlbumInfo from '@/components/AlbumInfo';
-import cardStyles from '@/components/Card.module.css';
+import cardStyles from '../components/Card.module.css';
 import styles from './page.module.css';
 import { client } from '../lib/tina-client';
 import { useState, useEffect } from 'react';
@@ -48,7 +48,7 @@ const Home = () => {
 
         <div className={styles.grid}>
           <div className={cardStyles.card}>
-            <h2 className="text-2xl font-bold mb-4">prochain concert</h2>
+            <h2 className="mb-4 text-2xl font-bold">prochain concert</h2>
             {nextConcert ? (
               <ConcertInfo
                 concert={nextConcert}
@@ -59,12 +59,12 @@ const Home = () => {
             )}
           </div>
           <div className={cardStyles.card}>
-            <h2 className="text-2xl font-bold mb-4">dernier Album</h2>
+            <h2 className="mb-4 text-2xl font-bold">dernier Album</h2>
             {latestAlbum && <AlbumInfo album={latestAlbum} minimal />}
           </div>
         </div>
         <div className={cardStyles.card}>
-          <h2 className="text-2xl font-bold mb-4">dernière vidéo</h2>
+          <h2 className="mb-4 text-2xl font-bold">dernière vidéo</h2>
           {latestVideo && <VideoGrid videos={[latestVideo]} />}
         </div>
       </section>

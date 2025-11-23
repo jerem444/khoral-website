@@ -19,3 +19,7 @@
   max-height: 90vh;
   border-radius: 0.5rem;
 } 
+
+.spinner {
+  @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
+}

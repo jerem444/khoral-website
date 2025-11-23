@@ -14,14 +14,8 @@ const ImageModal = ({ imageUrl, alt, onClose }: ImageModalProps) => {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <div
-      className={styles.modalOverlay}
-      onClick={onClose}
-    >
-      <div
-        className={styles.modalContent}
-        onClick={e => e.stopPropagation()}
-      >
+    <div className={styles.modalOverlay} onClick={onClose}>
+      <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
         {!isLoading && (
           <button
             onClick={onClose}
@@ -53,14 +47,10 @@ const ImageModal = ({ imageUrl, alt, onClose }: ImageModalProps) => {
           quality={75}
           loading="lazy"
           className={styles.modalImage}
-          onLoadingComplete={() => setIsLoading(false)}
+          onLoad={() => setIsLoading(false)}
         />
 
-        {isLoading && (
-          <div className={styles.spinner}>
-            chargement...
-          </div>
-        )}
+        {isLoading && <div className={styles.spinner}>chargement...</div>}
       </div>
     </div>
   );
