@@ -2,26 +2,32 @@ const sharp = require('sharp');
 const fs = require('fs');
 const path = require('path');
 
-const inputDir = '../public/src/assets/images';
-const outputDir = '../public/src/assets/images';
+const inputDir = '../public/src/assets/images/flyers';
+const outputDir = '../public/src/assets/images/flyers';
 const maxWidth = 1200; // Largeur maximale des images
 
-// Lire les fichiers du répertoire d'entrée
 fs.readdirSync(inputDir).forEach(file => {
-  if (file.match(/\.(webp)$/i)) {
+  if (file.match(/\.(jpg|JPG|jpeg|png)$/i)) {
     console.log(`Traitement de ${file}...`);
-    
-    sharp(path.join(inputDir, file))
-      .resize({ 
-        width: maxWidth, 
-        withoutEnlargement: true, // Ne pas agrandir les images plus petites
-        fit: 'inside' // Conserver les proportions
+    const inputPath = path.join(inputDir, file);
+    const tempPath = path.join(outputDir, `${path.parse(file).name}_temp.jpg`);
+    const outputPath = path.join(outputDir, `${path.parse(file).name}.jpg`);
+
+    sharp(inputPath)
+      .resize({
+        width: maxWidth,
+        withoutEnlargement: true,
+        fit: 'inside'
       })
-      .toFile(path.join(outputDir, `${path.parse(file).name}.jpg`))
+      .toFile(tempPath)
       .then(() => {
+        // Remplacer le fichier original par le temporaire
+        fs.renameSync(tempPath, outputPath);
         console.log(`✅ Converti: ${file} -> ${path.parse(file).name}.jpg`);
       })
       .catch(err => {
+        // Supprimer le fichier temporaire en cas d'erreur
+        if (fs.existsSync(tempPath)) fs.unlinkSync(tempPath);
         console.error(`❌ Erreur avec ${file}:`, err);
       });
   }
