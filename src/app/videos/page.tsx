@@ -12,7 +12,7 @@ const Videos = async () => {
     <main className={styles.container}>
       <Navbar />
       <div className={styles.content}>
-        <div className={styles.videoContainer}>
+        <div>
           <VideoGrid videos={videos} />
         </div>
       </div>

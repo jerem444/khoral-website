@@ -20,12 +20,11 @@
     "react-youtube": "^10.1.0",
     "sharp": "^0.34.2",
     "swiper": "^11.2.5",
-    "tinacms": "^2.7.2"
+    "tinacms": "^2.9.5"
   },
   "devDependencies": {
-    "@tinacms/cli": "^1.9.3",
+    "@tinacms/cli": "^1.12.4",
     "@types/node": "^20.17.25",
-    "@types/prop-types": "^15.7.14",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.2.0",
     "@types/react-youtube": "^7.6.2",

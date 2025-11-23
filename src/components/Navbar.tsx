@@ -91,7 +91,7 @@ const Navbar = () => {
             height={40} 
             className={styles.logo} 
           />
-          <span className={styles.brandText}>khoral</span>
+          <span>khoral</span>
         </Link>
         
         <HamburgerButton isOpen={isMenuOpen} onClick={toggleMenu} />
