@@ -30,7 +30,7 @@ const Bio = () => {
 
                     <div className={styles.bioText}>
                         <p>
-                            <b>khoral</b> est un trio coldwave nantais.
+                            <b>khoral</b> est un trio glitch wave nantais.
                         </p>
                         <p>
                             <b>karim</b>, chanteur et claviériste, est à l'origine du projet, initialement orienté vers la synthpop..
