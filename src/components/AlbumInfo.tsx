@@ -5,6 +5,7 @@ import Image from "next/image";
 import { AlbumPartsFragment } from "../../tina/__generated__/types";
 import cardStyles from "./Card.module.css";
 import styles from "./AlbumInfo.module.css";
+import { formatDate } from "@/lib/dateUtils";
 
 interface AlbumProps {
   album: AlbumPartsFragment;
@@ -38,7 +39,7 @@ const Album: React.FC<AlbumProps> = ({ album, minimal }) => {
       <div className={styles.albumFooter}>
         <p className={styles.albumReleaseDate}>
           {album.name.replaceAll("-", " ")} (
-          {new Date(album.releaseDate).toLocaleDateString()})
+          {formatDate(new Date(album.releaseDate))})
         </p>
         {!minimal && (
           <div className={styles.buyButtonContainer}>

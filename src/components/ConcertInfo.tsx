@@ -1,32 +1,15 @@
-'use client';
+"use client";
 
-import styles from './ConcertInfo.module.css';
-import cardStyles from './Card.module.css';
-import { ConcertPartsFragment } from '../../tina/__generated__/types';
-import Image from 'next/image';
+import styles from "./ConcertInfo.module.css";
+import cardStyles from "./Card.module.css";
+import { ConcertPartsFragment } from "../../tina/__generated__/types";
+import Image from "next/image";
+import { formatDate, formatTime } from "@/lib/dateUtils";
 
 interface ConcertInfoProps {
   concert: ConcertPartsFragment;
   onImageClick?: (imageUrl: string) => void;
 }
-
-const formatDate = (date: Date) => {
-  return date.toLocaleDateString('fr-FR', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-    timeZone: 'UTC'
-  });
-};
-
-const formatTime = (date: Date) => {
-  return date.toLocaleTimeString('fr-FR', {
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: false,
-    timeZone: 'UTC'
-  });
-};
 
 const ConcertInfo = ({ concert, onImageClick }: ConcertInfoProps) => {
   const concertDate = new Date(concert.date);
@@ -42,13 +25,11 @@ const ConcertInfo = ({ concert, onImageClick }: ConcertInfoProps) => {
               <p className={styles.address}>{concert.address}</p>
             )}
           </div>
-          
+
           <div className={styles.dateInfo}>
             <p className={styles.date}>{formatDate(concertDate)}</p>
             <p className={styles.time}>{formatTime(concertDate)}</p>
-            {concert.price && (
-              <p className={styles.price}>{concert.price}€</p>
-            )}
+            {concert.price && <p className={styles.price}>{concert.price}€</p>}
           </div>
 
           {concert.description && (
@@ -58,8 +39,8 @@ const ConcertInfo = ({ concert, onImageClick }: ConcertInfoProps) => {
 
         {concert.image && (
           <div className={styles.imageWrapper}>
-            <Image 
-              src={concert.image} 
+            <Image
+              src={concert.image}
               alt={concert.venue}
               width={300}
               height={300}
@@ -69,7 +50,7 @@ const ConcertInfo = ({ concert, onImageClick }: ConcertInfoProps) => {
           </div>
         )}
       </div>
-      
+
       {concert.ticketUrl && (
         <div className={styles.buttonContainer}>
           <a
@@ -84,6 +65,6 @@ const ConcertInfo = ({ concert, onImageClick }: ConcertInfoProps) => {
       )}
     </div>
   );
-}
+};
 
 export default ConcertInfo;

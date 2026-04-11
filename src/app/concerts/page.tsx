@@ -74,7 +74,7 @@ const ConcertsPage = () => {
               <div className={styles.concertsGrid}>
                 {pastConcerts.map((concert) => (
                   <ConcertInfo
-                    key={concert.venue}
+                    key={concert.venue + concert.date}
                     concert={concert}
                     onImageClick={(imageUrl: string) => handleImageClick(imageUrl, concert.venue)}
                   />
