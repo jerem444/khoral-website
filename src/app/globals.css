@@ -334,16 +334,3 @@ body::before {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary-dark);
 }
-
-.swiper-button-next::after,
-.swiper-button-prev::after {
-  color: white;
-}
-
-.swiper-pagination .swiper-pagination-bullet {
-  background-color: white;
-}
-
-.swiper-pagination .swiper-pagination-bullet-active {
-  background-color: white;
-}
