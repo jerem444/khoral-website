@@ -36,7 +36,7 @@ const Portfolio = () => {
                 alt={image.alt}
                 width={300}
                 height={200}
-                className={`${styles.image} cursor-pointer transition-transform hover:scale-105`}
+                className={styles.image}
                 onClick={() =>
                   setSelectedImage({ url: image.url, alt: image.name })
                 }

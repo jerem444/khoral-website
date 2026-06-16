@@ -1,69 +1,34 @@
 .gridContainer {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
-  width: 100%;
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: 20px;
+  @apply grid grid-cols-1 gap-6 w-full max-w-[1080px] mx-auto p-5;
 }
 
-/* Pour les mobiles */
 @media (max-width: 600px) {
   .gridContainer {
-    gap: 16px;
-    padding: 12px;
+    @apply gap-4 p-3;
   }
 }
 
-/* Pour les écrans moyens */
 @media (min-width: 601px) and (max-width: 1200px) {
   .gridContainer {
     max-width: 850px;
   }
 }
 
-/* Pour les grands écrans */
-@media (min-width: 1201px) {
-  .gridContainer {
-    max-width: 1080px;
-  }
-}
-
 .videoItem {
-  background-color: #141414;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  @apply bg-[#141414] rounded-xl overflow-hidden shadow-lg transition-all duration-300;
 }
 
 .videoItem:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  @apply -translate-y-[5px] shadow-2xl;
 }
 
 .videoContainer {
-  position: relative;
-  width: 100%;
-  padding-top: 56.25%; /* Ratio 16:9 */
-  background-color: #000;
-  max-height: 720px;
+  @apply relative w-full bg-black max-h-[720px];
+  padding-top: 56.25%;
 }
 
 .videoLoader {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #000;
-  color: white;
-  font-size: 14px;
-  z-index: 1;
+  @apply absolute inset-0 flex justify-center items-center bg-black text-white text-sm z-[1];
 }
 
 .videoContainer iframe {
@@ -77,28 +42,15 @@
 }
 
 .videoInfo {
-  padding: 16px;
-  color: #fff;
+  @apply p-4 text-white;
 }
 
 .videoTitle {
-  margin: 0 0 8px 0;
-  font-size: 18px;
-  font-weight: 600;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  @apply mb-2 mt-0 text-lg font-semibold truncate;
 }
 
 .videoDescription {
-  font-size: 14px;
-  margin: 0;
-  color: #aaa;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  @apply text-sm m-0 text-[#aaa] line-clamp-2;
 }
 
 @media (prefers-color-scheme: light) {
@@ -106,11 +58,11 @@
     background-color: #f8f8f8;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   }
-  
+
   .videoInfo {
     color: #333;
   }
-  
+
   .videoDescription {
     color: #666;
   }

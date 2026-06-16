@@ -1,44 +1,26 @@
 .container {
-  min-height: 100vh;
+  @apply min-h-screen;
 }
 
 .content {
-  @apply pt-4 md:pt-6 p-4 md:p-8; 
+  @apply pt-4 md:pt-6 p-4 md:p-8;
 }
 
 .buttonGroup {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+  @apply flex justify-center gap-4 mb-6;
 }
 
 .button {
-  padding: 0.75rem 2rem;
-  border-radius: 9999px;
-  background-color: rgba(255, 255, 255, 0.1);
-  color: white;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  @apply py-3 px-8 rounded-full bg-white/10 text-white font-medium transition-all duration-300 border border-white/20;
 }
 
 .button:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
+  @apply bg-white/20 -translate-y-0.5;
 }
 
 .grid {
   display: grid;
-  gap: 2rem;
-  margin-bottom: 2rem;
-}
-
-@media (min-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 3rem;
-  }
+  @apply gap-8 mb-8 md:grid-cols-2 md:gap-12;
 }
 
 .noContent {

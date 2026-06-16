@@ -44,7 +44,7 @@ const ConcertInfo = ({ concert, onImageClick }: ConcertInfoProps) => {
               alt={concert.venue}
               width={300}
               height={300}
-              className={`${styles.concertImage} cursor-pointer transition-transform hover:scale-105`}
+              className={styles.concertImage}
               onClick={() => concert.image && onImageClick?.(concert.image)}
             />
           </div>

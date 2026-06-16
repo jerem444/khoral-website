@@ -12,22 +12,11 @@
 }
 
 .brand {
-  @apply text-2xl font-normal text-white hover:text-gray-300;
-  transition: all 0.3s ease-in-out;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  @apply text-2xl font-normal text-white hover:text-gray-300 transition-all duration-300 flex items-center gap-[10px];
 }
 
 .logo {
-  height: 40px;
-  width: auto;
-}
-
-@media (max-width: 768px) {
-  .logo {
-    height: 32px;
-  }
+  @apply h-10 w-auto max-md:h-8;
 }
 
 /* Navigation Links Base */
@@ -36,7 +25,7 @@
 }
 
 .linkBase::after {
-  content: '';
+  content: "";
   @apply absolute bottom-0 h-0.5 bg-white transition-all duration-300;
 }
 
@@ -91,8 +80,7 @@
 }
 
 .burgerLine {
-  @apply w-6 h-0.5 bg-white;
-  transition: all 0.3s ease-in-out;
+  @apply w-6 h-0.5 bg-white transition-all duration-300;
 }
 
 .menuOpen .top {
