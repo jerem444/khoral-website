@@ -1,26 +1,21 @@
-import { client } from "@/lib/tina-client";
+import { client } from "@/lib/data-client";
 import { notFound } from "next/navigation";
 import styles from "../page.module.css";
-import { ConcertPartsFragment } from "../../../../tina/__generated__/types";
 import Navbar from "@/components/Navbar";
 import ConcertInfo from "@/components/ConcertInfo";
 
-async function getConcert(slug: string): Promise<ConcertPartsFragment | null> {
-  try {
-    const { data } = await client.queries.concert({ relativePath: `${slug}.json` });
-    return data.concert;
-  } catch {
-    return null;
-  }
+export async function generateStaticParams() {
+  const concerts = await client.getAllConcerts();
+  return concerts.map((c) => ({ slug: c.slug }));
 }
 
 interface ConcertPageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export default async function ConcertPage(props: ConcertPageProps) {
   const params = await props.params;
-  const concert = await getConcert(params.slug);
+  const concert = await client.getConcertBySlug(params.slug);
   if (!concert) return notFound();
 
   return (

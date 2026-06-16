@@ -1,9 +1,8 @@
-import React from 'react';
-import Navbar from '@/components/Navbar';
-import styles from './page.module.css';
-import VideoGrid from '@/components/VideoGrid';
-import { client } from '../../lib/tina-client';
-
+import React from "react";
+import Navbar from "@/components/Navbar";
+import styles from "./page.module.css";
+import VideoGrid from "@/components/VideoGrid";
+import { client } from "../../lib/data-client";
 
 const Videos = async () => {
   const videos = await client.getAllVideos();

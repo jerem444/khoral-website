@@ -1,10 +1,10 @@
-import Navbar from '@/components/Navbar';
-import { client } from '@/lib/tina-client';
-import AlbumInfo from '@/components/AlbumInfo';
-import styles from './page.module.css';
+import Navbar from "@/components/Navbar";
+import { client } from "@/lib/data-client";
+import AlbumInfo from "@/components/AlbumInfo";
+import styles from "./page.module.css";
 
 const Albums = async () => {
-   const [latestAlbum, ...otherAlbums] =await client.getAllAlbums();
+  const [latestAlbum, ...otherAlbums] = await client.getAllAlbums();
 
   return (
     <main className={styles.container}>

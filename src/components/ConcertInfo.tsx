@@ -2,12 +2,12 @@
 
 import styles from "./ConcertInfo.module.css";
 import cardStyles from "./Card.module.css";
-import { ConcertPartsFragment } from "../../tina/__generated__/types";
+import type { Concert } from "@/lib/types";
 import Image from "next/image";
 import { formatDate, formatTime } from "@/lib/dateUtils";
 
 interface ConcertInfoProps {
-  concert: ConcertPartsFragment;
+  concert: Concert;
   onImageClick?: (imageUrl: string) => void;
 }
 

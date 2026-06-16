@@ -3,9 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "tinacms dev -c \"next dev\"",
-    "build": "tinacms build && next build",
-    "next-build": "next build",
+    "dev": "next dev",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -17,11 +16,9 @@
     "next": "16.2.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-youtube": "^10.1.0",
-    "tinacms": "^3.9.1"
+    "react-youtube": "^10.1.0"
   },
   "devDependencies": {
-    "@tinacms/cli": "^2.4.4",
     "@types/node": "^20.17.25",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.2.0",

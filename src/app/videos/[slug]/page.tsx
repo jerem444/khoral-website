@@ -1,29 +1,20 @@
-import { client } from "@/lib/tina-client";
-import { VideoPartsFragment } from "../../../../tina/__generated__/types";
+import { client } from "@/lib/data-client";
 import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import styles from "../page.module.css";
 
-async function getVideo(
-  slug: string
-): Promise<VideoPartsFragment | null> {
-  try {
-    const { data } = await client.queries.video({
-      relativePath: `${slug}.json`,
-    });
-    return data.video;
-  } catch {
-    return null;
-  }
+export async function generateStaticParams() {
+  const videos = await client.getAllVideos();
+  return videos.map((v) => ({ slug: v.slug }));
 }
 
 interface VideoPageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export default async function VideoPage(props: VideoPageProps) {
   const params = await props.params;
-  const video = await getVideo(params.slug);
+  const video = await client.getVideoBySlug(params.slug);
   if (!video) return notFound();
 
   return (

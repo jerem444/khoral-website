@@ -2,13 +2,13 @@
 
 import React from "react";
 import Image from "next/image";
-import { AlbumPartsFragment } from "../../tina/__generated__/types";
+import type { Album } from "@/lib/types";
 import cardStyles from "./Card.module.css";
 import styles from "./AlbumInfo.module.css";
 import { formatDate } from "@/lib/dateUtils";
 
 interface AlbumProps {
-  album: AlbumPartsFragment;
+  album: Album;
   minimal?: boolean;
 }
 
