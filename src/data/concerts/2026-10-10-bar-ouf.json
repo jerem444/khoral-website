@@ -3,7 +3,8 @@
   "date": "2026-10-10T20:00:00.000Z",
   "city": "cholet",
   "address": "2 place saint-pierre",
-  "ticketUrl": "",
-  "image": "/src/assets/images/flyers/concerts.jpg",
-  "description": "khoral + sang froid"
+  "ticketUrl": "https://lebarouf-cholet.com/evenement/concert-sang-froid-choral",
+  "image": "/src/assets/images/flyers/barouf.jpg",
+  "description": "khoral + sang froid",
+  "price": 10
 }
