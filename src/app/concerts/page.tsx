@@ -3,6 +3,8 @@ import styles from "./page.module.css";
 import { client } from "@/lib/data-client";
 import ConcertsContent from "./ConcertsContent";
 
+export const dynamic = "force-dynamic";
+
 export default async function ConcertsPage() {
   const [futureConcerts, pastConcerts] = await Promise.all([
     client.getFutureConcerts(),

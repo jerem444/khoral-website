@@ -3,6 +3,8 @@ import styles from "./page.module.css";
 import { client } from "../lib/data-client";
 import HomeContent from "./HomeContent";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const [nextConcert, latestVideo, latestAlbum] = await Promise.all([
     client.getNextConcert(),
