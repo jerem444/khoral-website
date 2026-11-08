@@ -45,8 +45,16 @@
   @apply p-4 text-white;
 }
 
+.titleRow {
+  @apply mb-2 flex items-center justify-between gap-3;
+}
+
 .videoTitle {
-  @apply mb-2 mt-0 text-lg font-semibold truncate;
+  @apply m-0 min-w-0 flex-1 truncate text-lg font-semibold;
+}
+
+.videoType {
+  @apply inline-flex shrink-0 items-center rounded-full border border-[#666] bg-[#2b2b2b] px-2.5 py-1 text-xs font-medium text-[#eee];
 }
 
 .videoDescription {
@@ -61,6 +69,10 @@
 
   .videoInfo {
     color: #333;
+  }
+
+  .videoType {
+    @apply border-[#bbb] bg-[#e6e6e6] text-[#333];
   }
 
   .videoDescription {

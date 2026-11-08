@@ -53,7 +53,12 @@ const VideoGrid: React.FC<VideoGridProps> = ({ videos }) => {
             ></iframe>
           </div>
           <div className={styles.videoInfo}>
-            <h3 className={styles.videoTitle}>{video.title}</h3>
+            <div className={styles.titleRow}>
+              <h3 className={styles.videoTitle}>{video.title}</h3>
+              <span className={styles.videoType}>
+                {video.type === "live" ? "live" : "clip"}
+              </span>
+            </div>
             <p className={styles.videoDescription}>{video.description}</p>
           </div>
         </div>

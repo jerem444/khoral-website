@@ -3,5 +3,20 @@
 }
 
 .content {
-  @apply pt-4 md:pt-6 p-4 md:p-8; 
+  @apply pt-4 md:pt-6 p-4 md:p-8;
+}
+
+.videosList {
+  @apply mx-auto max-w-4xl;
+}
+
+.section {
+  @apply bg-black/40 backdrop-blur-sm p-3 md:p-4 rounded-lg border border-white/10 mb-8;
+}
+
+.sectionTitle {
+  @apply text-2xl md:text-3xl font-bold mb-6 text-center;
+  background: linear-gradient(to right, #fff, #ccc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

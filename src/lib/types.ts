@@ -10,10 +10,13 @@ export interface Concert {
   slug: string;
 }
 
+export type VideoType = "live" | "clip";
+
 export interface Video {
   title: string;
   date: string;
   url: string;
+  type: VideoType;
   description?: string;
   slug: string;
 }

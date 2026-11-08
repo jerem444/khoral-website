@@ -6,13 +6,26 @@ import { client } from "../../lib/data-client";
 
 const Videos = async () => {
   const videos = await client.getAllVideos();
+  const clips = videos.filter((video) => video.type === "clip");
+  const liveVideos = videos.filter((video) => video.type === "live");
 
   return (
     <main className={styles.container}>
       <Navbar />
       <div className={styles.content}>
-        <div>
-          <VideoGrid videos={videos} />
+        <div className={styles.videosList}>
+          {clips.length > 0 && (
+            <section className={styles.section}>
+              <h2 className={styles.sectionTitle}>clips</h2>
+              <VideoGrid videos={clips} />
+            </section>
+          )}
+          {liveVideos.length > 0 && (
+            <section className={styles.section}>
+              <h2 className={styles.sectionTitle}>concerts live</h2>
+              <VideoGrid videos={liveVideos} />
+            </section>
+          )}
         </div>
       </div>
     </main>
